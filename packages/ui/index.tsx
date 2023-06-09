@@ -1,3 +1,3 @@
-// component exports
-export * from './atoms/Button';
-export * from './atoms/Header';
+export * from './atoms';
+export * from './molecules';
+export * from './organisms';
