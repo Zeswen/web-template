@@ -1,5 +1,5 @@
 {
-  "name": "namastay",
+  "name": "zeswen",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -10,7 +10,7 @@
     "test": "turbo run test"
   },
   "devDependencies": {
-    "@namastay/eslint-config": "workspace:*",
+    "@zeswen/eslint-config": "workspace:*",
     "eslint": "^7.32.0",
     "prettier": "^2.5.1",
     "turbo": "latest"

@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['@namastay'],
+  extends: ['@zeswen'],
   settings: {
     next: {
       rootDir: ['apps/*/'],

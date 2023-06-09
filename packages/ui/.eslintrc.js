@@ -1,4 +1,4 @@
 module.exports = {
   root: true,
-  extends: ['@namastay', 'plugin:storybook/recommended'],
+  extends: ['@zeswen', 'plugin:storybook/recommended'],
 };

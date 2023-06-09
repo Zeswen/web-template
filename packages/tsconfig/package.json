@@ -1,5 +1,5 @@
 {
-  "name": "@namastay/tsconfig",
+  "name": "@zeswen/tsconfig",
   "version": "0.0.0",
   "private": true,
   "publishConfig": {

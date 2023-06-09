@@ -1,5 +1,5 @@
 {
-  "name": "@namastay/ui",
+  "name": "@zeswen/ui",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
@@ -11,8 +11,8 @@
     "storybook": "storybook dev -p 6006"
   },
   "devDependencies": {
-    "@namastay/eslint-config": "workspace:*",
-    "@namastay/tsconfig": "workspace:*",
+    "@zeswen/eslint-config": "workspace:*",
+    "@zeswen/tsconfig": "workspace:*",
     "@storybook/addon-essentials": "7.0.20",
     "@storybook/addon-interactions": "7.0.20",
     "@storybook/addon-links": "7.0.20",

@@ -4,21 +4,21 @@ importers:
 
   .:
     specifiers:
-      '@namastay/eslint-config': workspace:*
+      '@zeswen/eslint-config': workspace:*
       eslint: ^7.32.0
       prettier: ^2.5.1
       turbo: latest
     devDependencies:
-      '@namastay/eslint-config': link:packages/eslint-config
+      '@zeswen/eslint-config': link:packages/eslint-config
       eslint: 7.32.0
       prettier: 2.8.8
       turbo: 1.10.3
 
   apps/web:
     specifiers:
-      '@namastay/eslint-config': workspace:*
-      '@namastay/tsconfig': workspace:*
-      '@namastay/ui': workspace:*
+      '@zeswen/eslint-config': workspace:*
+      '@zeswen/tsconfig': workspace:*
+      '@zeswen/ui': workspace:*
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
@@ -30,13 +30,13 @@ importers:
       tailwindcss: ^3.3.2
       typescript: ^4.5.3
     dependencies:
-      '@namastay/ui': link:../../packages/ui
+      '@zeswen/ui': link:../../packages/ui
       next: 13.4.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
-      '@namastay/eslint-config': link:../../packages/eslint-config
-      '@namastay/tsconfig': link:../../packages/tsconfig
+      '@zeswen/eslint-config': link:../../packages/eslint-config
+      '@zeswen/tsconfig': link:../../packages/tsconfig
       '@types/node': 17.0.45
       '@types/react': 18.2.5
       '@types/react-dom': 18.2.3
@@ -62,8 +62,8 @@ importers:
 
   packages/ui:
     specifiers:
-      '@namastay/eslint-config': workspace:*
-      '@namastay/tsconfig': workspace:*
+      '@zeswen/eslint-config': workspace:*
+      '@zeswen/tsconfig': workspace:*
       '@storybook/addon-essentials': 7.0.20
       '@storybook/addon-interactions': 7.0.20
       '@storybook/addon-links': 7.0.20
@@ -89,8 +89,8 @@ importers:
       typescript: ^4.5.2
       vitest: ^0.32.0
     devDependencies:
-      '@namastay/eslint-config': link:../eslint-config
-      '@namastay/tsconfig': link:../tsconfig
+      '@zeswen/eslint-config': link:../eslint-config
+      '@zeswen/tsconfig': link:../tsconfig
       '@storybook/addon-essentials': 7.0.20_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-interactions': 7.0.20_biqbaboplfbrettd7655fr4n2y
       '@storybook/addon-links': 7.0.20_biqbaboplfbrettd7655fr4n2y

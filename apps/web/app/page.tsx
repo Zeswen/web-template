@@ -1,9 +1,9 @@
-import { Button, Header } from '@namastay/ui';
+import { Button, Header } from '@zeswen/ui';
 
 export default function Page() {
   return (
     <>
-      <Header text="Web" />
+      <Header>Web</Header>
       <Button />
     </>
   );

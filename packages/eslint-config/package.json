@@ -1,5 +1,5 @@
 {
-  "name": "@namastay/eslint-config",
+  "name": "@zeswen/eslint-config",
   "version": "0.0.0",
   "main": "index.js",
   "dependencies": {
