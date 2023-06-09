@@ -1,4 +1,5 @@
 {
+  "name": "namastay",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -7,12 +8,10 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@turbo/gen": "^1.9.7",
+    "@namastay/eslint-config": "workspace:*",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@7.15.0",
-  "name": "namastay-v3"
+  "packageManager": "pnpm@7.15.0"
 }

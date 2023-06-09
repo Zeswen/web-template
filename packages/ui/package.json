@@ -1,20 +1,18 @@
 {
-  "name": "ui",
+  "name": "@namastay/ui",
   "version": "0.0.0",
   "main": "./index.tsx",
   "types": "./index.tsx",
-  "license": "MIT",
   "scripts": {
-    "lint": "eslint \"**/*.ts*\"",
-    "generate:component": "turbo gen react-component"
+    "lint": "eslint \"**/*.ts*\""
   },
   "devDependencies": {
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
+    "@namastay/eslint-config": "workspace:*",
+    "@namastay/tsconfig": "workspace:*",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
     "react": "^17.0.2",
-    "tsconfig": "workspace:*",
     "typescript": "^4.5.2"
   }
 }
