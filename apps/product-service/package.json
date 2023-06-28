@@ -4,7 +4,7 @@
   "main": "dist",
   "scripts": {
     "start": "node .",
-    "build": "esbuild src/index.ts --bundle --platform=node --outdir=dist"
+    "build": "esbuild src/index.ts --bundle --minify --platform=node --outdir=dist"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.8.17",

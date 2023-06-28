@@ -1,5 +1,5 @@
+import { Server, ServerCredentials } from '@grpc/grpc-js';
 import { Product } from '@zeswen/proto';
-import grpc from '@grpc/grpc-js';
 
 const mockProduct: Product.Product = {
   id: 1,
@@ -25,13 +25,10 @@ const productServer: Product.ProductServiceServer = {
   },
 };
 
-const server = new grpc.Server();
+const server = new Server();
 server.addService(Product.ProductServiceService, productServer);
 
-server.bindAsync(
-  'localhost:50051',
-  grpc.ServerCredentials.createInsecure(),
-  () => {
-    server.start();
-  }
-);
+server.bindAsync('localhost:50051', ServerCredentials.createInsecure(), () => {
+  server.start();
+  console.log('Server running at http://localhost:50051');
+});
