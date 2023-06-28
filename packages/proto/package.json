@@ -1,0 +1,18 @@
+{
+  "name": "@zeswen/proto",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {
+    "build": "protoc --plugin=.\\node_modules\\.bin\\protoc-gen-ts_proto --ts_proto_out=./ --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true *.proto"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.17",
+    "long": "^5.2.3",
+    "protobufjs": "^7.2.4",
+    "ts-proto": "^1.150.1"
+  },
+  "devDependencies": {
+    "@zeswen/tsconfig": "workspace:*"
+  }
+}

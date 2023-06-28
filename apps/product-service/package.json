@@ -1,0 +1,18 @@
+{
+  "name": "product-service",
+  "version": "1.0.0",
+  "main": "dist",
+  "scripts": {
+    "start": "node .",
+    "build": "esbuild src/index.ts --bundle --platform=node --outdir=dist"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.8.17",
+    "@zeswen/db": "workspace:*",
+    "@zeswen/proto": "workspace:*"
+  },
+  "devDependencies": {
+    "@zeswen/tsconfig": "workspace:*",
+    "esbuild": "^0.18.10"
+  }
+}
