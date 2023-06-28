@@ -18,6 +18,7 @@ importers:
     specifiers:
       '@grpc/grpc-js': ^1.8.17
       '@zeswen/db': workspace:*
+      '@zeswen/eslint-config': workspace:^1.0.0
       '@zeswen/proto': workspace:*
       '@zeswen/tsconfig': workspace:*
       esbuild: ^0.18.10
@@ -27,6 +28,7 @@ importers:
       '@zeswen/db': link:../../packages/db
       '@zeswen/proto': link:../../packages/proto
     devDependencies:
+      '@zeswen/eslint-config': link:../../packages/eslint-config
       '@zeswen/tsconfig': link:../../packages/tsconfig
       esbuild: 0.18.10
       esbuild-plugin-copy: 2.1.1_esbuild@0.18.10
@@ -65,13 +67,10 @@ importers:
   packages/db:
     specifiers:
       '@prisma/client': 4.16.1
-      '@zeswen/tsconfig': workspace:*
       prisma: ^4.16.1
     dependencies:
       '@prisma/client': 4.16.1_prisma@4.16.1
       prisma: 4.16.1
-    devDependencies:
-      '@zeswen/tsconfig': link:../tsconfig
 
   packages/eslint-config:
     specifiers:
@@ -88,7 +87,6 @@ importers:
   packages/proto:
     specifiers:
       '@grpc/grpc-js': ^1.8.17
-      '@zeswen/tsconfig': workspace:*
       long: ^5.2.3
       protobufjs: ^7.2.4
       ts-proto: ^1.150.1
@@ -97,8 +95,6 @@ importers:
       long: 5.2.3
       protobufjs: 7.2.4
       ts-proto: 1.150.1
-    devDependencies:
-      '@zeswen/tsconfig': link:../tsconfig
 
   packages/tsconfig:
     specifiers: {}

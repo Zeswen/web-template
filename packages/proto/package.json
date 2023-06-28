@@ -11,8 +11,5 @@
     "long": "^5.2.3",
     "protobufjs": "^7.2.4",
     "ts-proto": "^1.150.1"
-  },
-  "devDependencies": {
-    "@zeswen/tsconfig": "workspace:*"
   }
 }

@@ -11,8 +11,5 @@
   "dependencies": {
     "@prisma/client": "4.16.1",
     "prisma": "^4.16.1"
-  },
-  "devDependencies": {
-    "@zeswen/tsconfig": "workspace:*"
   }
 }
