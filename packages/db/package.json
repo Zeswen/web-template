@@ -1,8 +1,8 @@
 {
   "name": "@zeswen/db",
   "version": "1.0.0",
-  "main": "client",
-  "types": "client",
+  "main": "index.ts",
+  "types": "index.ts",
   "scripts": {
     "build": "prisma generate",
     "migrate": "prisma migrate deploy",

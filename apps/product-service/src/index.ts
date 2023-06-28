@@ -1,27 +1,61 @@
-import { Server, ServerCredentials } from '@grpc/grpc-js';
+import { Server, ServerCredentials, status } from '@grpc/grpc-js';
 import { Product } from '@zeswen/proto';
+import { PrismaClient } from '@zeswen/db';
 
-const mockProduct: Product.Product = {
-  id: 1,
-  name: 'Product 1',
-  description: 'Product 1 description',
-  imageUrl: 'https://picsum.photos/200',
-  tags: [],
-  createdAt: new Date(),
-  updatedAt: new Date(),
-};
+const prisma = new PrismaClient();
 
 const productServer: Product.ProductServiceServer = {
-  listProducts: (_call, callback) => {
-    callback(null, { products: [] });
+  listProducts: async (_call, callback) => {
+    const dbProducts = await prisma.product.findMany({
+      include: { tags: true },
+    });
+
+    const products = dbProducts.map((dbProduct) => ({
+      ...dbProduct,
+      tags: dbProduct.tags.map((tag) => tag.value),
+    }));
+
+    callback(null, { products });
   },
-  getProduct: (call, callback) => {
+  getProduct: async (call, callback) => {
     const productId = call.request.id;
-    callback(null, { product: mockProduct });
+    const dbProduct = await prisma.product.findUnique({
+      include: { tags: { select: { value: true } } },
+      where: { id: productId },
+    });
+
+    if (!dbProduct) {
+      return callback(
+        { code: status.INVALID_ARGUMENT, message: 'Product not found' },
+        null
+      );
+    }
+
+    const product = {
+      ...dbProduct,
+      tags: dbProduct?.tags.map((tag) => tag.value),
+    };
+
+    callback(null, { product });
   },
-  createProduct: (call, callback) => {
-    const { name, description, image, tags } = call.request;
-    callback(null, { product: mockProduct });
+  createProduct: async (call, callback) => {
+    const { name, description, imageUrl, tags } = call.request;
+    const dbProduct = await prisma.product.create({
+      data: {
+        name,
+        description,
+        imageUrl,
+        tags: { createMany: { data: tags.map((tag) => ({ value: tag })) } },
+      },
+      include: { tags: { select: { value: true } } },
+    });
+
+    const product = {
+      ...dbProduct,
+      tags: dbProduct.tags.map((tag) => tag.value),
+    };
+
+    callback(null, { product });
   },
 };
 
@@ -30,5 +64,5 @@ server.addService(Product.ProductServiceService, productServer);
 
 server.bindAsync('localhost:50051', ServerCredentials.createInsecure(), () => {
   server.start();
-  console.log('Server running at http://localhost:50051');
+  console.log('gRPC server running at http://localhost:50051');
 });

@@ -5,7 +5,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-  output = "./dist"
+  output   = "./dist"
 }
 
 model Product {
@@ -15,4 +15,14 @@ model Product {
   imageUrl    String   @db.VarChar(255)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  tags        Tag[]
+}
+
+model Tag {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  value     String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Product   Product  @relation(fields: [productId], references: [id])
 }
