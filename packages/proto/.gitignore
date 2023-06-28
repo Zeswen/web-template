@@ -1,2 +1,4 @@
+# Protobuf generations
 *.ts
 !index.ts
+google/**/*
