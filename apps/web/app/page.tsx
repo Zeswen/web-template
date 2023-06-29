@@ -1,10 +1,13 @@
-import { Button, Header } from '@zeswen/ui';
+import { Header } from '@zeswen/ui';
+import Link from 'next/link';
 
-export default function Page() {
+const Page = () => {
   return (
     <>
-      <Header>Web</Header>
-      <Button />
+      <Header>Home</Header>
+      <Link href="/products">Go to Products</Link>
     </>
   );
-}
+};
+
+export default Page;

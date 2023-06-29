@@ -64,5 +64,5 @@ server.addService(Product.ProductServiceService, productServer);
 
 server.bindAsync('localhost:50051', ServerCredentials.createInsecure(), () => {
   server.start();
-  console.log('gRPC server running at http://localhost:50051');
+  console.log('gRPC server running at localhost:50051');
 });

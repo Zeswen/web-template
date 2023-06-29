@@ -18,7 +18,7 @@ importers:
     specifiers:
       '@grpc/grpc-js': ^1.8.17
       '@zeswen/db': workspace:*
-      '@zeswen/eslint-config': workspace:^1.0.0
+      '@zeswen/eslint-config': workspace:*
       '@zeswen/proto': workspace:*
       '@zeswen/tsconfig': workspace:*
       esbuild: ^0.18.10
@@ -35,10 +35,12 @@ importers:
 
   apps/web:
     specifiers:
+      '@grpc/grpc-js': ^1.8.17
       '@types/node': ^17.0.12
       '@types/react': ^18.0.22
       '@types/react-dom': ^18.0.7
       '@zeswen/eslint-config': workspace:*
+      '@zeswen/proto': workspace:*
       '@zeswen/tsconfig': workspace:*
       '@zeswen/ui': workspace:*
       autoprefixer: ^10.4.14
@@ -49,6 +51,8 @@ importers:
       tailwindcss: ^3.3.2
       typescript: ^4.5.3
     dependencies:
+      '@grpc/grpc-js': 1.8.17
+      '@zeswen/proto': link:../../packages/proto
       '@zeswen/ui': link:../../packages/ui
       next: 13.4.1_biqbaboplfbrettd7655fr4n2y
       react: 18.2.0

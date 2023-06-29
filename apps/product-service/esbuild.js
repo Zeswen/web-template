@@ -2,6 +2,7 @@ const { build } = require('esbuild');
 const { copy } = require('esbuild-plugin-copy');
 
 build({
+  entryPoints: ['./index.ts'],
   bundle: true,
   minify: true,
   platform: 'node',

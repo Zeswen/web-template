@@ -1,6 +1,6 @@
 {
   "name": "@zeswen/web",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "next start",
@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.8.17",
+    "@zeswen/proto": "workspace:*",
     "@zeswen/ui": "workspace:*",
     "next": "^13.4.1",
     "react": "^18.2.0",

@@ -1,5 +1,5 @@
 {
   "extends": "@zeswen/tsconfig/base.json",
-  "include": ["."],
-  "exclude": ["node_modules"]
+  "include": ["./**/*.ts"],
+  "exclude": ["dist", "node_modules"]
 }
