@@ -1,8 +1,1 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ['**/*.tsx'],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
+module.exports = require('@zeswen/tailwind-config/tailwind.config');
