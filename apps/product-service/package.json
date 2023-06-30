@@ -4,6 +4,7 @@
   "main": "dist",
   "scripts": {
     "start": "node .",
+    "dev": "node .",
     "build": "node esbuild.js"
   },
   "dependencies": {
