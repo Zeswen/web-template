@@ -1,5 +1,7 @@
+const nextTranslate = require('next-translate-plugin');
+
 /** @type {import('next').NextConfig} */
-module.exports = {
+module.exports = nextTranslate({
   reactStrictMode: true,
   transpilePackages: ['@zeswen/ui'],
   images: {
@@ -9,4 +11,4 @@ module.exports = {
       },
     ],
   },
-};
+});
