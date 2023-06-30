@@ -1,10 +1,17 @@
 import { credentials } from '@grpc/grpc-js';
-import { Product } from '@zeswen/proto';
+import { Product, grpcRequest } from '@zeswen/proto';
 
-export const grpcClient = new Product.ProductServiceClient(
+const productGrpcClient = new Product.ProductServiceClient(
   'localhost:50051',
   credentials.createInsecure()
 );
 
-export { Product } from '@zeswen/proto';
-export type { ServiceError } from '@grpc/grpc-js';
+export const listProducts = (request: Product.ListProductsRequest) =>
+  grpcRequest(productGrpcClient.listProducts.bind(productGrpcClient), request);
+export const getProduct = (request: Product.GetProductRequest) =>
+  grpcRequest(productGrpcClient.getProduct.bind(productGrpcClient), request);
+export const createProduct = (request: Product.CreateProductRequest) =>
+  grpcRequest(productGrpcClient.createProduct.bind(productGrpcClient), request);
+
+export const { ListProductsRequest, GetProductRequest, CreateProductRequest } =
+  Product;

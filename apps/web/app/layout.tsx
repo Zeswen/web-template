@@ -5,16 +5,13 @@ import './globals.css';
 
 type RootLayoutProps = {
   children: React.ReactNode;
-  params: {
-    lang: string;
-  };
 };
 
-const RootLayout = ({ children, params: { lang } }: RootLayoutProps) => {
+const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html lang={lang}>
+    <html lang="en">
       <body>
-        {locales.map((locale) => (
+        {locales!.map((locale) => (
           <NextLink
             legacyBehavior
             passHref

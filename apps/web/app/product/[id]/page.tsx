@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Product, grpcClient } from '../../../lib/grpc';
+import { GetProductRequest, getProduct } from '../../../lib/grpc';
 
 type PageProps = {
   params: {
@@ -8,12 +8,8 @@ type PageProps = {
 };
 
 const Page = async ({ params }: PageProps) => {
-  const request = Product.GetProductRequest.create({ id: Number(params.id) });
-  const { product } = await new Promise<Product.GetProductResponse>(
-    (resolve, reject) =>
-      grpcClient.getProduct(request, (error, response) =>
-        error ? reject(error) : resolve(response)
-      )
+  const { product } = await getProduct(
+    GetProductRequest.create({ id: Number(params.id) })
   );
 
   return (
@@ -21,9 +17,9 @@ const Page = async ({ params }: PageProps) => {
       <h1>{product.name}</h1>
       <Image
         src={product.imageUrl}
+        alt={product.name}
         width={200}
         height={200}
-        alt={product.name}
       />
       <p>{product.description}</p>
       {product.tags.length ? (
@@ -33,8 +29,8 @@ const Page = async ({ params }: PageProps) => {
           ))}
         </ul>
       ) : null}
-      <sub>{product.createdAt.toISOString()}</sub>
-      <sub>{product.updatedAt.toISOString()}</sub>
+      <sub>{product.createdAt?.toISOString()}</sub>
+      <sub>{product.updatedAt?.toISOString()}</sub>
     </>
   );
 };

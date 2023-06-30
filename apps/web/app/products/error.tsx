@@ -3,8 +3,12 @@
 import { Button } from '@zeswen/ui';
 import Trans from 'next-translate/Trans';
 
-const Error = ({ error, reset }: { error: Error; reset: () => void }) => {
-  console.log(error);
+type ErrorProps = {
+  error: Error;
+  reset: () => void;
+};
+
+const Error = ({ error, reset }: ErrorProps) => {
   return (
     <>
       <p>
