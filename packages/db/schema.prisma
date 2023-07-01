@@ -9,7 +9,7 @@ generator client {
 }
 
 model Product {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid()) @db.Uuid
   name        String   @db.VarChar(255)
   description String   @db.VarChar(255)
   imageUrl    String   @db.VarChar(255)
@@ -19,8 +19,8 @@ model Product {
 }
 
 model Tag {
-  id        Int      @id @default(autoincrement())
-  productId Int
+  id        String   @id @default(uuid()) @db.Uuid
+  productId String   @db.Uuid
   value     String   @db.VarChar(255)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

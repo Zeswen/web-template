@@ -1,8 +1,7 @@
 {
   "name": "@zeswen/proto",
   "version": "1.0.0",
-  "main": "index.ts",
-  "types": "index.ts",
+  "type": "module",
   "scripts": {
     "build": "protoc --plugin=.\\node_modules\\.bin\\protoc-gen-ts_proto --ts_proto_out=./ --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true *.proto"
   },

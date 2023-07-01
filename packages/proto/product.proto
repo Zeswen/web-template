@@ -5,7 +5,7 @@ package product;
 import "google/protobuf/timestamp.proto";
 
 message Product {
-  int32 id = 1;
+  string id = 1;
   string name = 2;
   string description = 3;
   string image_url = 4;
@@ -26,7 +26,7 @@ message CreateProductResponse {
 }
 
 message GetProductRequest {
-  int32 id = 1;
+  string id = 1;
 }
 
 message GetProductResponse {

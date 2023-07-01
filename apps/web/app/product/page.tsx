@@ -1,7 +1,12 @@
-import { Button } from '@zeswen/ui';
+import Button from '@zeswen/ui/atoms/Button';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { CreateProductRequest, createProduct } from '../../lib/grpc';
+
+export const metadata = {
+  title: 'Zeswen - Create Product',
+  description: 'Create product in the Zeswen application',
+};
 
 const Page = () => {
   const createProductAction = async (data: FormData) => {
@@ -28,22 +33,40 @@ const Page = () => {
       console.log({ product });
 
       revalidatePath('/products');
-      revalidatePath(`/product/${product.id}`);
       redirect(`/product/${product.id}`);
     }
   };
 
   return (
     <form className="flex flex-col" action={createProductAction}>
-      <input required type="text" name="name" placeholder="Name" />
       <input
+        className="py-3"
+        required
+        type="text"
+        name="name"
+        placeholder="Name"
+      />
+      <input
+        className="py-3"
         required
         type="text"
         name="description"
         placeholder="Description"
       />
-      <input required type="text" name="imageUrl" placeholder="Image URL" />
-      <input required type="text" name="tags" placeholder="Tags" />
+      <input
+        className="py-3"
+        required
+        type="text"
+        name="imageUrl"
+        placeholder="Image URL"
+      />
+      <input
+        className="py-3"
+        required
+        type="text"
+        name="tags"
+        placeholder="Tags"
+      />
       <Button>Submit</Button>
     </form>
   );

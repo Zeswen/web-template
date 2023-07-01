@@ -1,28 +1,33 @@
-import { Link } from '@zeswen/ui';
-import Trans from 'next-translate/Trans';
+import Link from '@zeswen/ui/atoms/Link';
 import NextLink from 'next/link';
 import { ListProductsRequest, listProducts } from '../../lib/grpc';
+
+export const revalidate = 3600;
+
+export const metadata = {
+  title: 'Zeswen - Products',
+  description: 'Product list of the Zeswen application',
+};
 
 const Page = async () => {
   const { products } = await listProducts(ListProductsRequest.create());
 
   return (
-    <ul className="list-disc">
-      <li>
-        <NextLink legacyBehavior passHref href="/product/">
-          <Link>
-            <Trans i18nKey="common:createProduct" />
-          </Link>
-        </NextLink>
-      </li>
+    <>
+      <NextLink legacyBehavior passHref href="/product/">
+        <Link>Create product</Link>
+      </NextLink>
       {products?.map((product) => (
-        <li key={product.id}>
-          <NextLink legacyBehavior passHref href={`/product/${product.id}`}>
-            <Link>{product.name}</Link>
-          </NextLink>
-        </li>
+        <NextLink
+          key={product.id}
+          legacyBehavior
+          passHref
+          href={`/product/${product.id}`}
+        >
+          <Link>{product.name}</Link>
+        </NextLink>
       ))}
-    </ul>
+    </>
   );
 };
 

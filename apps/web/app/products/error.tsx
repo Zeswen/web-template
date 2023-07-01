@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@zeswen/ui';
-import Trans from 'next-translate/Trans';
+import Button from '@zeswen/ui/atoms/Button';
 
 type ErrorProps = {
   error: Error;
@@ -11,12 +10,8 @@ type ErrorProps = {
 const Error = ({ error, reset }: ErrorProps) => {
   return (
     <>
-      <p>
-        <Trans i18nKey="common:error" /> {error.message}
-      </p>
-      <Button onClick={reset}>
-        <Trans i18nKey="common:reset" />
-      </Button>
+      <p>Internal Error: {error.message}</p>
+      <Button onClick={reset}>Reset</Button>
     </>
   );
 };

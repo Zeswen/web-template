@@ -17,30 +17,44 @@ This Turborepo includes the following packages/apps:
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-### Utilities
+## Getting started
 
-This Turborepo has some additional tools already setup for you:
+### pnpm
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+Install [pnpm](https://pnpm.io/installation).
 
-### Build
+### Protocol Buffer Compiler
 
-To build all apps and packages, run the following command:
+Install [Protocol Buffer Compiler](https://grpc.io/docs/protoc-installation/).
 
-```
-cd my-turborepo
-pnpm build
-```
+### PostgreSQL
+
+Install [PostgreSQL]('https://hub.docker.com/_/postgres').
+
+### Environment Variables
+
+Add .env to `apps/product-service` and `packages/db` with the `DATABASE_URL` variable.
 
 ### Develop
 
 To develop all apps and packages, run the following command:
 
-```
-cd my-turborepo
+```sh
 pnpm dev
+```
+
+### Deploy
+
+To build all apps and packages, run the following command:
+
+```sh
+pnpm build
+```
+
+To start the already built and optimized apps, run the following command:
+
+```sh
+pnpm start
 ```
 
 ## Useful Links

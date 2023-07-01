@@ -1,5 +1,5 @@
-import { Header, Link } from '@zeswen/ui';
-import Trans from 'next-translate/Trans';
+import Header from '@zeswen/ui/atoms/Header';
+import Link from '@zeswen/ui/atoms/Link';
 import NextLink from 'next/link';
 import type { ReactNode } from 'react';
 
@@ -10,13 +10,9 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-      <Header>
-        <Trans i18nKey="common:product" />
-      </Header>
+      <Header>Product</Header>
       <NextLink legacyBehavior passHref href="/products">
-        <Link>
-          <Trans i18nKey="common:goProducts" />
-        </Link>
+        <Link>Go to Product List</Link>
       </NextLink>
       {children}
     </>

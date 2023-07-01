@@ -14,7 +14,7 @@ export const Link = forwardRef<HTMLAnchorElement, Props>(
     return (
       <a
         ref={ref}
-        className={`text-blue-400 underline cursor-pointer ${className}`}
+        className={`block py-3 text-blue-700 underline cursor-pointer ${className}`}
         href={href}
         onClick={onClick}
       >
