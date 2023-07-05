@@ -1,10 +1,13 @@
 import { Server, ServerCredentials, status } from '@grpc/grpc-js';
-import { Product } from '@zeswen/proto';
-import { PrismaClient } from '@zeswen/db';
+import { PrismaClient } from '@zeswen/db/client';
+import {
+  ProductServiceService,
+  type ProductServiceServer,
+} from '@zeswen/proto/product';
 
 const prisma = new PrismaClient();
 
-const productServer: Product.ProductServiceServer = {
+const productServer: ProductServiceServer = {
   listProducts: async (_call, callback) => {
     const dbProducts = await prisma.product.findMany({
       include: { tags: true },
@@ -60,9 +63,10 @@ const productServer: Product.ProductServiceServer = {
 };
 
 const server = new Server();
-server.addService(Product.ProductServiceService, productServer);
+server.addService(ProductServiceService, productServer);
 
 server.bindAsync('localhost:50051', ServerCredentials.createInsecure(), () => {
   server.start();
+  // eslint-disable-next-line no-console
   console.log('gRPC server running at localhost:50051');
 });

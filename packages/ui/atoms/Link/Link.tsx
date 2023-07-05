@@ -6,20 +6,18 @@ type Props = {
   children?: ReactNode;
   className?: string;
   href?: string;
-  onClick?: () => void;
 };
 
-export const Link = forwardRef<HTMLAnchorElement, Props>(
-  ({ children, href, className = '', onClick }, ref) => {
-    return (
-      <a
-        ref={ref}
-        className={`block py-3 text-blue-700 underline cursor-pointer ${className}`}
-        href={href}
-        onClick={onClick}
-      >
-        {children}
-      </a>
-    );
-  }
+const Link = forwardRef<HTMLAnchorElement, Props>(
+  ({ children, href = '#', className = '' }, ref) => (
+    <a
+      ref={ref}
+      className={`block py-3 text-blue-700 underline cursor-pointer ${className}`}
+      href={href}
+    >
+      {children}
+    </a>
+  )
 );
+
+export default Link;

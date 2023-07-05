@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
-import { Link } from './Link';
+import Link from './Link';
 
 const meta: Meta<typeof Link> = {
   component: Link,
@@ -14,6 +13,5 @@ export const Primary: Story = {
   args: {
     className: 'p-1',
     children: 'Primary',
-    onClick: alert,
   },
 };

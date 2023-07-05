@@ -2,6 +2,7 @@
 module.exports = {
   extends: ['@zeswen/eslint-config/base'],
   parserOptions: {
-    project: './apps/product-service/tsconfig.json',
+    tsconfigRootDir: __dirname,
+    project: './tsconfig.json',
   },
 };

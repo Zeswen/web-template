@@ -1,10 +1,5 @@
 import Image from 'next/image';
-import {
-  GetProductRequest,
-  ListProductsRequest,
-  getProduct,
-  listProducts,
-} from '../../../lib/grpc';
+import { getProduct, listProducts } from '../../../lib/grpc';
 
 type PageProps = {
   params: {
@@ -13,9 +8,7 @@ type PageProps = {
 };
 
 export const generateMetadata = async ({ params }: PageProps) => {
-  const { product } = await getProduct(
-    GetProductRequest.create({ id: params.id })
-  );
+  const { product } = await getProduct({ id: params.id });
 
   return {
     title: `Zeswen - ${product.name}`,
@@ -24,14 +17,12 @@ export const generateMetadata = async ({ params }: PageProps) => {
 };
 
 export const generateStaticParams = async () => {
-  const { products } = await listProducts(ListProductsRequest.create());
+  const { products } = await listProducts();
   return products.map(({ id }) => ({ id }));
 };
 
 const Page = async ({ params }: PageProps) => {
-  const { product } = await getProduct(
-    GetProductRequest.create({ id: params.id })
-  );
+  const { product } = await getProduct({ id: params.id });
 
   return (
     <>

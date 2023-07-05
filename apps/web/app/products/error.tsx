@@ -7,13 +7,13 @@ type ErrorProps = {
   reset: () => void;
 };
 
-const Error = ({ error, reset }: ErrorProps) => {
-  return (
-    <>
-      <p>Internal Error: {error.message}</p>
-      <Button onClick={reset}>Reset</Button>
-    </>
-  );
-};
+const Error = ({ error, reset }: ErrorProps) => (
+  <>
+    <p>Internal Error: {error.message}</p>
+    <Button type="reset" onClick={reset}>
+      Reset
+    </Button>
+  </>
+);
 
 export default Error;

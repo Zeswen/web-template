@@ -1,6 +1,6 @@
 import Link from '@zeswen/ui/atoms/Link';
 import NextLink from 'next/link';
-import { ListProductsRequest, listProducts } from '../../lib/grpc';
+import { listProducts } from '../../lib/grpc';
 
 export const revalidate = 3600;
 
@@ -10,7 +10,7 @@ export const metadata = {
 };
 
 const Page = async () => {
-  const { products } = await listProducts(ListProductsRequest.create());
+  const { products } = await listProducts();
 
   return (
     <>

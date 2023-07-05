@@ -1,5 +1,17 @@
 /** @type import('eslint').ESLint.ConfigData */
 module.exports = {
   root: true,
-  extends: ['@zeswen'],
+  extends: ['next/core-web-vitals', '@zeswen/eslint-config/react'],
+  settings: {
+    next: {
+      rootDir: './apps/web/',
+    },
+  },
+  parserOptions: {
+    babelOptions: {
+      presets: [require.resolve('next/babel')],
+    },
+    tsconfigRootDir: __dirname,
+    project: './tsconfig.json',
+  },
 };

@@ -1,7 +1,7 @@
 import Button from '@zeswen/ui/atoms/Button';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { CreateProductRequest, createProduct } from '../../lib/grpc';
+import { createProduct } from '../../lib/grpc';
 
 export const metadata = {
   title: 'Zeswen - Create Product',
@@ -27,9 +27,8 @@ const Page = () => {
         tags: (formEntries.tags as string).split(','),
       };
 
-      const { product } = await createProduct(
-        CreateProductRequest.create(base)
-      );
+      const { product } = await createProduct(base);
+      // eslint-disable-next-line no-console
       console.log({ product });
 
       revalidatePath('/products');
@@ -67,7 +66,7 @@ const Page = () => {
         name="tags"
         placeholder="Tags"
       />
-      <Button>Submit</Button>
+      <Button type="submit">Submit</Button>
     </form>
   );
 };

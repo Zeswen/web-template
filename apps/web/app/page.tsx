@@ -7,15 +7,13 @@ export const metadata = {
   description: 'Home of the Zeswen application',
 };
 
-const Page = async () => {
-  return (
-    <>
-      <Header>Home</Header>
-      <NextLink legacyBehavior passHref href="/products">
-        <Link>Go to Product List</Link>
-      </NextLink>
-    </>
-  );
-};
+const Page = () => (
+  <>
+    <Header>Home</Header>
+    <NextLink legacyBehavior passHref href="/products">
+      <Link>Go to Product List</Link>
+    </NextLink>
+  </>
+);
 
 export default Page;

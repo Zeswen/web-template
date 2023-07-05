@@ -24,5 +24,3 @@ export const grpcRequest = <T extends GrpcMethod>(
     })
   );
 };
-
-export * as Product from './product';
