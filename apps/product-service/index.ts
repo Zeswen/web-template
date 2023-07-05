@@ -36,7 +36,7 @@ const productServer: Product.ProductServiceServer = {
       tags: dbProduct?.tags.map((tag) => tag.value),
     };
 
-    callback(null, { product });
+    return callback(null, { product });
   },
   createProduct: async (call, callback) => {
     const { name, description, imageUrl, tags } = call.request;
