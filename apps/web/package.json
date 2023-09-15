@@ -2,11 +2,13 @@
   "name": "@zeswen/web",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "next start",
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check": "tsc"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.9.2",

@@ -9,7 +9,7 @@ export const metadata = {
   description: 'Product list of the Zeswen application',
 };
 
-const Page = async () => {
+export default async function Page() {
   const { products } = await listProducts();
 
   return (
@@ -29,6 +29,4 @@ const Page = async () => {
       ))}
     </>
   );
-};
-
-export default Page;
+}

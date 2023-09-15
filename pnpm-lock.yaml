@@ -45,6 +45,9 @@ importers:
       esbuild-plugin-copy:
         specifier: ^2.1.1
         version: 2.1.1(esbuild@0.19.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
 
   apps/web:
     dependencies:
@@ -163,9 +166,25 @@ importers:
       ts-proto:
         specifier: ^1.157.0
         version: 1.157.0
+    devDependencies:
+      '@zeswen/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@zeswen/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/tailwind-config:
     devDependencies:
+      '@types/node':
+        specifier: ^20.6.0
+        version: 20.6.0
+      '@zeswen/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@zeswen/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       autoprefixer:
         specifier: ^10.4.15
         version: 10.4.15(postcss@8.4.29)
@@ -175,6 +194,9 @@ importers:
       postcss:
         specifier: ^8.4.29
         version: 8.4.29
+      postcss-load-config:
+        specifier: ^4.0.1
+        version: 4.0.1(postcss@8.4.29)
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3
@@ -4273,7 +4295,7 @@ packages:
   /@types/node-fetch@2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
-      '@types/node': 16.18.50
+      '@types/node': 20.6.0
       form-data: 3.0.1
     dev: true
 

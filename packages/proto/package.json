@@ -10,5 +10,9 @@
     "long": "^5.2.3",
     "protobufjs": "^7.2.5",
     "ts-proto": "^1.157.0"
+  },
+  "devDependencies": {
+    "@zeswen/eslint-config": "workspace:*",
+    "@zeswen/tsconfig": "workspace:*"
   }
 }

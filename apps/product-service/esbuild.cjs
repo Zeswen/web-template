@@ -7,6 +7,7 @@ build({
   minify: true,
   platform: 'node',
   outdir: './dist',
+  target: 'es2022',
   plugins: [
     copy({
       resolveFrom: 'cwd',

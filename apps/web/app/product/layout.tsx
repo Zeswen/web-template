@@ -7,14 +7,14 @@ type LayoutProps = {
   children: ReactNode;
 };
 
-const Layout = ({ children }: LayoutProps) => (
-  <>
-    <Header>Product</Header>
-    <NextLink legacyBehavior passHref href="/products">
-      <Link>Go to Product List</Link>
-    </NextLink>
-    {children}
-  </>
-);
-
-export default Layout;
+export default function Layout({ children }: LayoutProps) {
+  return (
+    <>
+      <Header>Product</Header>
+      <NextLink legacyBehavior passHref href="/products">
+        <Link>Go to Product List</Link>
+      </NextLink>
+      {children}
+    </>
+  );
+}

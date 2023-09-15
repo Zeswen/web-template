@@ -7,21 +7,21 @@ type PageProps = {
   };
 };
 
-export const generateMetadata = async ({ params }: PageProps) => {
+export async function generateMetadata({ params }: PageProps) {
   const { product } = await getProduct({ id: params.id });
 
   return {
     title: `Zeswen - ${product.name}`,
     description: product.description,
   };
-};
+}
 
-export const generateStaticParams = async () => {
+export async function generateStaticParams() {
   const { products } = await listProducts();
   return products.map(({ id }) => ({ id }));
-};
+}
 
-const Page = async ({ params }: PageProps) => {
+export default async function Page({ params }: PageProps) {
   const { product } = await getProduct({ id: params.id });
 
   return (
@@ -46,6 +46,4 @@ const Page = async ({ params }: PageProps) => {
       <sub>{product.updatedAt?.toISOString()}</sub>
     </>
   );
-};
-
-export default Page;
+}

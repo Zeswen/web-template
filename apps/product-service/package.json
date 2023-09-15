@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node .",
     "dev": "node .",
-    "build": "node esbuild.cjs"
+    "build": "node esbuild.cjs",
+    "lint": "eslint \"**/*.ts*\"",
+    "check": "tsc"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.9.2",
@@ -16,6 +18,7 @@
     "@zeswen/eslint-config": "workspace:*",
     "@zeswen/tsconfig": "workspace:*",
     "esbuild": "^0.19.2",
-    "esbuild-plugin-copy": "^2.1.1"
+    "esbuild-plugin-copy": "^2.1.1",
+    "typescript": "^5.2.2"
   }
 }

@@ -1,6 +1,7 @@
 {
   "name": "zeswen",
   "private": true,
+  "packageManager": "pnpm@8.7.5",
   "scripts": {
     "start": "turbo run start",
     "build": "turbo run build",
@@ -9,7 +10,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "migrate": "turbo run migrate",
     "storybook": "turbo run storybook",
-    "test": "turbo run test"
+    "check": "turbo run check",
+    "test": "turbo run test",
+    "test:dev": "turbo run test:dev"
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",

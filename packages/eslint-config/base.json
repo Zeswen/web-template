@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/eslintrc.json",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
+}

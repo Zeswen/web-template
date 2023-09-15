@@ -1,3 +1,3 @@
-const Loading = () => <p>Loading...</p>;
-
-export default Loading;
+export default function Loading() {
+  return <p>Loading...</p>;
+}

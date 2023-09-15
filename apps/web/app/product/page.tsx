@@ -8,7 +8,7 @@ export const metadata = {
   description: 'Create product in the Zeswen application',
 };
 
-const Page = () => {
+export default function Page() {
   const createProductAction = async (data: FormData) => {
     'use server';
 
@@ -28,8 +28,6 @@ const Page = () => {
       };
 
       const { product } = await createProduct(base);
-      // eslint-disable-next-line no-console
-      console.log({ product });
 
       revalidatePath('/products');
       redirect(`/product/${product.id}`);
@@ -69,6 +67,4 @@ const Page = () => {
       <Button type="submit">Submit</Button>
     </form>
   );
-};
-
-export default Page;
+}

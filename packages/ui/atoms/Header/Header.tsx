@@ -1,12 +1,12 @@
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type Props = {
   children?: ReactNode;
   className?: string;
 };
 
-const Header: FC<Props> = ({ children, className = '' }) => (
-  <h1 className={`text-xl ${className}`}>{children}</h1>
-);
+function Header({ children, className = '' }: Props) {
+  return <h1 className={`text-xl ${className}`}>{children}</h1>;
+}
 
 export default Header;

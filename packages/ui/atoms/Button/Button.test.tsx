@@ -18,6 +18,5 @@ test('executes function on click', async () => {
   );
 
   await userEvent.click(screen.getByText('Click'));
-  screen.debug();
   expect(mockFunction).toHaveBeenCalled();
 });
