@@ -2,29 +2,42 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "start": {
-      "persistent": true
+      "persistent": true,
+      "dotEnv": [".env"]
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "dist/**", "!.next/cache/**"]
+      "outputs": [".next/**", "dist/**", "!.next/cache/**"],
+      "dotEnv": [".env"]
     },
-    "check": {},
+    "check": {
+      "dotEnv": [".env"]
+    },
     "@zeswen/product-service#check": {
       "dependsOn": ["^build"]
     },
-    "lint": {},
+    "lint": {
+      "dotEnv": [".env"]
+    },
     "dev": {
       "dependsOn": ["^build"],
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "dotEnv": [".env"]
     },
-    "migrate": {},
+    "migrate": {
+      "dotEnv": [".env"]
+    },
     "storybook": {
+      "dotEnv": [".env"],
       "cache": false,
       "persistent": true
     },
-    "test": {},
+    "test": {
+      "dotEnv": [".env"]
+    },
     "test:dev": {
+      "dotEnv": [".env"],
       "cache": false,
       "persistent": true
     }
