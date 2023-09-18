@@ -1,24 +1,22 @@
 {
   "name": "@zeswen/product-service",
   "version": "1.0.0",
-  "main": "dist",
+  "type": "module",
   "scripts": {
-    "start": "node .",
-    "dev": "node .",
-    "build": "node esbuild.cjs",
+    "start": "bun run index.ts",
+    "build": "bun run build.ts",
+    "dev": "bun run index.ts --watch",
     "lint": "eslint \"**/*.ts*\"",
     "check": "tsc"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.2",
+    "@grpc/grpc-js": "^1.9.3",
     "@zeswen/db": "workspace:*",
     "@zeswen/proto": "workspace:*"
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
     "@zeswen/tsconfig": "workspace:*",
-    "esbuild": "^0.19.2",
-    "esbuild-plugin-copy": "^2.1.1",
     "typescript": "^5.2.2"
   }
 }
