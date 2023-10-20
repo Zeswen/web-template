@@ -1,11 +1,11 @@
-import Header from '@zeswen/ui/atoms/Header';
-import Link from '@zeswen/ui/atoms/Link';
-import NextLink from 'next/link';
-import type { ReactNode } from 'react';
+import Header from '@zeswen/ui/atoms/Header'
+import Link from '@zeswen/ui/atoms/Link'
+import NextLink from 'next/link'
+import type { ReactNode } from 'react'
 
 type LayoutProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 export default function Layout({ children }: LayoutProps) {
   return (
@@ -16,5 +16,5 @@ export default function Layout({ children }: LayoutProps) {
       </NextLink>
       {children}
     </>
-  );
+  )
 }

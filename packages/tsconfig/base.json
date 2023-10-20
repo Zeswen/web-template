@@ -33,7 +33,10 @@
     "isolatedModules": false,
     "composite": false,
     "preserveWatchOutput": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "verbatimModuleSyntax": true
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

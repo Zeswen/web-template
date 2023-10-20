@@ -1,18 +1,18 @@
-import Button from '@zeswen/ui/atoms/Button';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
-import { createProduct } from '../../lib/grpc';
+import Button from '@zeswen/ui/atoms/Button'
+import { revalidatePath } from 'next/cache'
+import { redirect } from 'next/navigation'
+import { createProduct } from '../../lib/grpc'
 
 export const metadata = {
   title: 'Zeswen - Create Product',
-  description: 'Create product in the Zeswen application',
-};
+  description: 'Create product in the Zeswen application'
+}
 
 export default function Page() {
   const createProductAction = async (data: FormData) => {
-    'use server';
+    'use server'
 
-    const formEntries = Object.fromEntries(data);
+    const formEntries = Object.fromEntries(data)
 
     if (
       formEntries?.name &&
@@ -24,15 +24,15 @@ export default function Page() {
         name: formEntries.name as string,
         description: formEntries.description as string,
         imageUrl: formEntries.imageUrl as string,
-        tags: (formEntries.tags as string).split(','),
-      };
+        tags: (formEntries.tags as string).split(',')
+      }
 
-      const { product } = await createProduct(base);
+      const { product } = await createProduct(base)
 
-      revalidatePath('/products');
-      redirect(`/product/${product.id}`);
+      revalidatePath('/products')
+      redirect(`/product/${product.id}`)
     }
-  };
+  }
 
   return (
     <form className="flex flex-col" action={createProductAction}>
@@ -66,5 +66,5 @@ export default function Page() {
       />
       <Button type="submit">Submit</Button>
     </form>
-  );
+  )
 }

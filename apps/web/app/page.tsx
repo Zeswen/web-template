@@ -1,11 +1,11 @@
-import Header from '@zeswen/ui/atoms/Header';
-import Link from '@zeswen/ui/atoms/Link';
-import NextLink from 'next/link';
+import Header from '@zeswen/ui/atoms/Header'
+import Link from '@zeswen/ui/atoms/Link'
+import NextLink from 'next/link'
 
 export const metadata = {
   title: 'Zeswen - Home',
-  description: 'Home of the Zeswen application',
-};
+  description: 'Home of the Zeswen application'
+}
 
 export default function Page() {
   return (
@@ -15,5 +15,5 @@ export default function Page() {
         <Link>Go to Product List</Link>
       </NextLink>
     </>
-  );
+  )
 }

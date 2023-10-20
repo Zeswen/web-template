@@ -1,17 +1,17 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import Link from './Link';
+import type { Meta, StoryObj } from '@storybook/react'
+import Link from './Link'
 
 const meta: Meta<typeof Link> = {
-  component: Link,
-};
+  component: Link
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof Link>;
+type Story = StoryObj<typeof Link>
 
 export const Primary: Story = {
   args: {
     className: 'p-1',
-    children: 'Primary',
-  },
-};
+    children: 'Primary'
+  }
+}
