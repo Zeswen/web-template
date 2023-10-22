@@ -2,10 +2,11 @@
   "name": "@zeswen/product-service",
   "version": "1.0.0",
   "main": "dist",
+  "type": "module",
   "scripts": {
     "start": "node .",
-    "dev": "node .",
-    "build": "node esbuild.cjs",
+    "dev": "node esbuild.js --watch",
+    "build": "node esbuild.js",
     "lint": "eslint \"**/*.ts*\"",
     "check": "tsc"
   },
