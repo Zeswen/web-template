@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
 type Props = {
-  children?: ReactNode;
-  className?: string;
-  onClick?: () => void;
-  type: HTMLButtonElement['type'];
-};
+  children?: ReactNode
+  className?: string
+  onClick?: () => void
+  type: HTMLButtonElement['type']
+}
 
 export default function Button({
   children,
   className = '',
   onClick,
-  type = 'button',
+  type = 'button'
 }: Props) {
   return (
     <button
@@ -23,5 +23,5 @@ export default function Button({
     >
       {children}
     </button>
-  );
+  )
 }

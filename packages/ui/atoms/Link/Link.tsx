@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-import { forwardRef, type ReactNode } from 'react';
+import { forwardRef, type ReactNode } from 'react'
 
 type Props = {
-  children?: ReactNode;
-  className?: string;
-  href?: string;
-};
+  children?: ReactNode
+  className?: string
+  href?: string
+}
 
 const Link = forwardRef<HTMLAnchorElement, Props>(
   ({ children, href = '#', className = '' }, ref) => (
@@ -18,6 +18,6 @@ const Link = forwardRef<HTMLAnchorElement, Props>(
       {children}
     </a>
   )
-);
+)
 
-export default Link;
+export default Link

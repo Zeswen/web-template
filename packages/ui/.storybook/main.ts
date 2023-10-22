@@ -1,4 +1,4 @@
-import type { StorybookConfig } from '@storybook/react-vite';
+import type { StorybookConfig } from '@storybook/react-vite'
 
 const config: StorybookConfig = {
   stories: ['../**/*.stories.tsx'],
@@ -7,13 +7,13 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     {
-      name: '@storybook/addon-styling',
-    },
+      name: '@storybook/addon-styling'
+    }
   ],
   framework: {
     name: '@storybook/react-vite',
-    options: {},
-  },
-};
+    options: {}
+  }
+}
 
-export default config;
+export default config

@@ -1,9 +1,9 @@
-import { render } from '@testing-library/react';
-import { expect, test } from 'vitest';
+import { render, screen } from '@testing-library/react'
+import { expect, test } from 'bun:test'
 
-import Link from './Link';
+import Link from './Link'
 
 test('navigates on click', async () => {
-  const link = render(<Link href="/">Click</Link>);
-  expect(link).toBeTruthy();
-});
+  render(<Link href="/">Click</Link>)
+  expect(screen.getByText('Click')).toBeTruthy()
+})

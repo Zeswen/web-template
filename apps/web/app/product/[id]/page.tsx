@@ -1,28 +1,28 @@
-import Image from 'next/image';
-import { getProduct, listProducts } from '../../../lib/grpc';
+import Image from 'next/image'
+import { getProduct, listProducts } from '../../../lib/grpc'
 
 type PageProps = {
   params: {
-    id: string;
-  };
-};
+    id: string
+  }
+}
 
 export async function generateMetadata({ params }: PageProps) {
-  const { product } = await getProduct({ id: params.id });
+  const { product } = await getProduct({ id: params.id })
 
   return {
     title: `Zeswen - ${product.name}`,
-    description: product.description,
-  };
+    description: product.description
+  }
 }
 
 export async function generateStaticParams() {
-  const { products } = await listProducts();
-  return products.map(({ id }) => ({ id }));
+  const { products } = await listProducts()
+  return products.map(({ id }) => ({ id }))
 }
 
 export default async function Page({ params }: PageProps) {
-  const { product } = await getProduct({ id: params.id });
+  const { product } = await getProduct({ id: params.id })
 
   return (
     <>
@@ -37,7 +37,7 @@ export default async function Page({ params }: PageProps) {
       <p>{product.description}</p>
       {product.tags.length ? (
         <ul className="list-disc list-inside pl-1">
-          {product.tags.map((tag) => (
+          {product.tags.map(tag => (
             <li key={tag}>{tag}</li>
           ))}
         </ul>
@@ -45,5 +45,5 @@ export default async function Page({ params }: PageProps) {
       <sub>{product.createdAt?.toISOString()}</sub>
       <sub>{product.updatedAt?.toISOString()}</sub>
     </>
-  );
+  )
 }
