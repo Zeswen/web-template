@@ -1,13 +1,9 @@
 name: Continuous Integration
 on:
   push:
-    paths:
-      - "**.{cjs, js, jsx, ts, tsx, proto}"
     branches:
       - main
   pull_request:
-    paths:
-      - "**.{cjs, js, jsx, ts, tsx, proto}"
     branches:
       - main
 jobs:
