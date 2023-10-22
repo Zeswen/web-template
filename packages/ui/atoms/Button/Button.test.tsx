@@ -1,15 +1,14 @@
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
-import { expect, test, vi } from 'vitest'
+import { userEvent } from '@testing-library/user-event'
+import { expect, mock, test } from 'bun:test'
 import Button from './Button'
 
 test('renders', async () => {
   render(<Button type="button">Click</Button>)
   expect(screen.getByText('Click')).toBeTruthy()
 })
-
 test('executes function on click', async () => {
-  const mockFunction = vi.fn()
+  const mockFunction = mock(() => {})
 
   render(
     <Button type="button" onClick={mockFunction}>

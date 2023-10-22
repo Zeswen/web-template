@@ -2,6 +2,15 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Default",
   "compilerOptions": {
+    "types": [
+      "bun-types"
+    ],
+    "lib": [
+      "ESNext"
+    ],
+    "moduleDetection": "force",
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "alwaysStrict": true,
@@ -33,8 +42,7 @@
     "isolatedModules": false,
     "composite": false,
     "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "verbatimModuleSyntax": true
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules"
