@@ -5,16 +5,8 @@
   },
   "overrides": [
     {
-      "files": [
-        "*.ts",
-        "*.tsx"
-      ],
-      "extends": [
-        "airbnb",
-        "airbnb/hooks",
-        "airbnb-typescript",
-        "prettier"
-      ],
+      "files": ["*.ts", "*.tsx"],
+      "extends": ["airbnb", "airbnb/hooks", "airbnb-typescript", "prettier"],
       "rules": {
         "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
@@ -24,7 +16,5 @@
       }
     }
   ],
-  "ignorePatterns": [
-    "**.tsbuildinfo"
-  ]
+  "ignorePatterns": ["**.tsbuildinfo"]
 }

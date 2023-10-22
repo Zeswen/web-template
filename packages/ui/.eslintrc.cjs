@@ -4,6 +4,6 @@ module.exports = {
   extends: ['@zeswen/eslint-config/react', 'plugin:storybook/recommended'],
   parserOptions: {
     tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
-  },
-};
+    project: './tsconfig.json'
+  }
+}

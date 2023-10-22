@@ -4,14 +4,14 @@ module.exports = {
   extends: ['next/core-web-vitals', '@zeswen/eslint-config/react'],
   settings: {
     next: {
-      rootDir: './apps/web/',
-    },
+      rootDir: './apps/web/'
+    }
   },
   parserOptions: {
     babelOptions: {
-      presets: [require.resolve('next/babel')],
+      presets: [require.resolve('next/babel')]
     },
     tsconfigRootDir: __dirname,
-    project: './tsconfig.json',
-  },
-};
+    project: './tsconfig.json'
+  }
+}

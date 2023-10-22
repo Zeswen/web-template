@@ -5,20 +5,12 @@
   },
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
-      "extends": [
-        "airbnb-base",
-        "airbnb-typescript/base",
-        "prettier"
-      ],
+      "files": ["*.ts"],
+      "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }
     }
   ],
-  "ignorePatterns": [
-    "**.tsbuildinfo"
-  ]
+  "ignorePatterns": ["**.tsbuildinfo"]
 }
