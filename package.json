@@ -16,8 +16,8 @@
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
-    "eslint": "^8.49.0",
+    "eslint": "^8.52.0",
     "prettier": "^3.0.3",
-    "turbo": "^1.10.13"
+    "turbo": "^1.10.16"
   }
 }

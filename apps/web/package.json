@@ -11,24 +11,24 @@
     "check": "tsc"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.2",
+    "@grpc/grpc-js": "^1.9.7",
     "@zeswen/proto": "workspace:*",
     "@zeswen/ui": "workspace:*",
-    "next": "^13.4.19",
+    "next": "^13.5.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sharp": "^0.32.5"
+    "sharp": "^0.32.6"
   },
   "devDependencies": {
-    "@types/node": "^20.6.0",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
+    "@types/node": "^20.8.7",
+    "@types/react": "^18.2.31",
+    "@types/react-dom": "^18.2.14",
     "@zeswen/eslint-config": "workspace:*",
     "@zeswen/tailwind-config": "workspace:*",
     "@zeswen/tsconfig": "workspace:*",
-    "autoprefixer": "^10.4.15",
-    "eslint-config-next": "^13.4.19",
-    "postcss": "^8.4.29",
+    "autoprefixer": "^10.4.16",
+    "eslint-config-next": "^13.5.6",
+    "postcss": "^8.4.31",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.2.2"
   }
