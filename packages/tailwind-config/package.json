@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "devDependencies": {
-    "@types/node": "^20.8.7",
+    "@types/node": "^20.8.8",
     "@zeswen/eslint-config": "workspace:*",
     "@zeswen/tsconfig": "workspace:*",
     "autoprefixer": "^10.4.16",
