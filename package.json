@@ -1,7 +1,7 @@
 {
   "name": "zeswen",
   "private": true,
-  "packageManager": "pnpm@8.9.2",
+  "packageManager": "pnpm@8.10.2",
   "type": "module",
   "scripts": {
     "start": "turbo run start",
@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "prettier": "^3.0.3",
     "turbo": "^1.10.16"
   }

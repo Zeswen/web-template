@@ -1,13 +1,10 @@
 import { join } from 'path'
 import { fileURLToPath } from 'url'
 
-console.log('path: ' + join(fileURLToPath(import.meta.url), '../../../'))
-
 /** @type import('next').NextConfig */
 const nextConfig = {
   output: 'standalone',
   experimental: {
-    serverActions: true,
     outputFileTracingRoot: join(fileURLToPath(import.meta.url), '../../../')
   },
   eslint: { ignoreDuringBuilds: true },
