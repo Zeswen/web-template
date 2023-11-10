@@ -4,12 +4,12 @@
   "packageManager": "pnpm@8.10.2",
   "type": "module",
   "scripts": {
-    "start": "turbo run start",
-    "build": "turbo run build",
-    "dev": "turbo run dev",
+    "start": "dotenv -- turbo run start",
+    "build": "dotenv -- turbo run build",
+    "dev": "dotenv -- turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write **",
-    "migrate": "turbo run migrate",
+    "migrate": "dotenv -- turbo run migrate",
     "storybook": "turbo run storybook",
     "check": "turbo run check",
     "test": "turbo run test",
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
+    "dotenv-cli": "^7.3.0",
     "eslint": "^8.53.0",
     "prettier": "^3.0.3",
     "turbo": "^1.10.16"

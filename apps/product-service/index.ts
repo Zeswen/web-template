@@ -65,8 +65,16 @@ const productServer: ProductServiceServer = {
 const server = new Server()
 server.addService(ProductServiceService, productServer)
 
-server.bindAsync('localhost:50051', ServerCredentials.createInsecure(), () => {
-  server.start()
-  // eslint-disable-next-line no-console
-  console.log('gRPC server running at localhost:50051')
-})
+if (!process.env.API_URL) {
+  throw new Error('API_URL environment variable is required.')
+}
+
+server.bindAsync(
+  process.env.API_URL,
+  ServerCredentials.createInsecure(),
+  () => {
+    server.start()
+    // eslint-disable-next-line no-console
+    console.log(`gRPC server running at ${process.env.API_URL}`)
+  }
+)

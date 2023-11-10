@@ -7,8 +7,12 @@ import {
   ProductServiceClient
 } from '@zeswen/proto/product'
 
+if (!process.env.API_URL) {
+  throw new Error('API_URL environment variable is required.')
+}
+
 const productGrpcClient = new ProductServiceClient(
-  'localhost:50051',
+  process.env.API_URL,
   credentials.createInsecure()
 )
 
