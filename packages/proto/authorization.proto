@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package authorization;
+
+message GetAuthorizationRequest {
+  string token = 1;
+}
+
+message GetAuthorizationResponse {}
+
+service AuthorizationService {
+  rpc GetAuthorization(GetAuthorizationRequest) returns (GetAuthorizationResponse);
+}

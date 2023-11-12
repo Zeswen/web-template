@@ -1,8 +1,8 @@
 {
-  "name": "auth-service",
+  "name": "authorization-service",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/auth-service/src",
+  "sourceRoot": "apps/authorization-service/src",
   "targets": {
     "build": {
       "executor": "@monodon/rust:build",
@@ -10,7 +10,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "apps/auth-service/dist"
+        "target-dir": "apps/authorization-service/dist"
       },
       "configurations": {
         "production": {
@@ -24,7 +24,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "apps/auth-service/dist"
+        "target-dir": "apps/authorization-service/dist"
       },
       "configurations": {
         "production": {
@@ -38,7 +38,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "apps/auth-service/dist"
+        "target-dir": "apps/authorization-service/dist"
       }
     },
     "run": {
@@ -47,7 +47,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "apps/auth-service/dist"
+        "target-dir": "apps/authorization-service/dist"
       },
       "configurations": {
         "production": {

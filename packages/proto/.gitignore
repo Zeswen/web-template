@@ -1,4 +1,7 @@
 # Protobuf generations
 *.ts
+*.rs
+!lib.rs
+!build.rs
 !index.ts
 google/**/*

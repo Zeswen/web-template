@@ -1,0 +1,11 @@
+[package]
+name = "auth-service"
+version = "1.0.0"
+edition = "2021"
+
+
+[dependencies]
+prost-types = "0.12.1"
+proto = { path = "../../packages/proto" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+tonic = "0.10.2"

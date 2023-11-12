@@ -35,6 +35,7 @@ yarn-error.log*
 
 # builds
 dist
+target
 
 
 .nx/cache

@@ -43,6 +43,7 @@ const productServer: ProductServiceServer = {
   },
   createProduct: async (call, callback) => {
     const { name, description, imageUrl, tags } = call.request
+
     const dbProduct = await prisma.product.create({
       data: {
         name,
