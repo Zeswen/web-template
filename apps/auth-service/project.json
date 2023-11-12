@@ -10,7 +10,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "dist/target/auth-service"
+        "target-dir": "apps/auth-service/dist"
       },
       "configurations": {
         "production": {
@@ -24,7 +24,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "dist/target/auth-service"
+        "target-dir": "apps/auth-service/dist"
       },
       "configurations": {
         "production": {
@@ -38,7 +38,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "dist/target/auth-service"
+        "target-dir": "apps/auth-service/dist"
       }
     },
     "run": {
@@ -47,7 +47,7 @@
         "{options.target-dir}"
       ],
       "options": {
-        "target-dir": "dist/target/auth-service"
+        "target-dir": "apps/auth-service/dist"
       },
       "configurations": {
         "production": {
