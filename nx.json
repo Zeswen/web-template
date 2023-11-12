@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "nxCloudAccessToken": "MzQ3OWJlMjgtNzRlMy00NmZlLWE2NDQtY2RjMWQ2YTdjZDU3fHJlYWQtd3JpdGU=",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "namedInputs": {
+    "sharedGlobals": [
+      "{workspaceRoot}/.env"
+    ]
+  },
+  "targetDefaults": {
+    "start": {},
+    "build": {
+      "cache": true,
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "{projectRoot}/.next/**",
+        "{projectRoot}/dist/**",
+        "!{projectRoot}/.next/cache/**"
+      ]
+    },
+    "check": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "dev": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "migrate": {},
+    "storybook": {},
+    "test": {
+      "cache": true
+    },
+    "test:dev": {}
+  },
+  "plugins": [
+    "@monodon/rust"
+  ]
+}

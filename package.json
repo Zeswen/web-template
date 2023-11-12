@@ -4,22 +4,11 @@
   "packageManager": "pnpm@8.10.2",
   "type": "module",
   "scripts": {
-    "start": "dotenv -- turbo run start",
-    "build": "dotenv -- turbo run build",
-    "dev": "dotenv -- turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write **",
-    "migrate": "dotenv -- turbo run migrate",
-    "storybook": "turbo run storybook",
-    "check": "turbo run check",
-    "test": "turbo run test",
-    "test:dev": "turbo run test:dev"
+    "format": "prettier --write **"
   },
   "devDependencies": {
-    "@zeswen/eslint-config": "workspace:*",
-    "dotenv-cli": "^7.3.0",
-    "eslint": "^8.53.0",
-    "prettier": "^3.0.3",
-    "turbo": "^1.10.16"
+    "@monodon/rust": "^1.2.0",
+    "nx": "17.1.1",
+    "prettier": "^3.0.3"
   }
 }

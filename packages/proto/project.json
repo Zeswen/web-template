@@ -1,0 +1,9 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "root": "packages\\proto",
+  "targets": {
+    "build-ts": {
+      "command": "protoc --plugin={projectRoot}\\node_modules\\.bin\\protoc-gen-ts_proto --ts_proto_out=./ --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true {projectRoot}\\*.proto"
+    }
+  }
+}

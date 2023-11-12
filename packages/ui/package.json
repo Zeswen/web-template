@@ -27,7 +27,6 @@
     "@zeswen/tailwind-config": "workspace:*",
     "@zeswen/tsconfig": "workspace:*",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.53.0",
     "eslint-plugin-storybook": "^0.6.15",
     "jsdom": "^22.1.0",
     "postcss": "^8.4.31",
