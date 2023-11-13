@@ -1,11 +1,41 @@
-import { Server, ServerCredentials, status } from '@grpc/grpc-js'
+import {
+  ChannelCredentials,
+  Server,
+  ServerCredentials,
+  status
+} from '@grpc/grpc-js'
 import { PrismaClient } from '@zeswen/db/client'
+import { grpcRequest } from '@zeswen/proto'
+import {
+  AuthorizationServiceClient,
+  GetAuthorizationRequest
+} from '@zeswen/proto/authorization'
 import {
   ProductServiceService,
   type ProductServiceServer
 } from '@zeswen/proto/product'
 
+if (!process.env.PRODUCT_API_URL || !process.env.AUTHORIZATION_API_URL) {
+  throw new Error(
+    'PRODUCT_API_URL or AUTHORIZATION_API_URL environment variable is required.'
+  )
+}
+
 const prisma = new PrismaClient()
+
+const authorizationServiceClient = new AuthorizationServiceClient(
+  process.env.AUTHORIZATION_API_URL,
+  ChannelCredentials.createInsecure()
+)
+
+async function getAuthorization(token: string) {
+  return grpcRequest(
+    authorizationServiceClient.getAuthorization.bind(
+      authorizationServiceClient
+    ),
+    GetAuthorizationRequest.create({ token })
+  )
+}
 
 const productServer: ProductServiceServer = {
   listProducts: async (_call, callback) => {
@@ -21,7 +51,25 @@ const productServer: ProductServiceServer = {
     callback(null, { products })
   },
   getProduct: async (call, callback) => {
-    const productId = call.request.id
+    const productId = call.request?.id
+    const token = call.metadata.get('authorization')?.[0]?.toString()
+
+    if (!token) {
+      return callback(
+        { code: status.UNAUTHENTICATED, message: 'authorization missing' },
+        null
+      )
+    }
+
+    if (!productId) {
+      return callback(
+        { code: status.INVALID_ARGUMENT, message: 'id missing' },
+        null
+      )
+    }
+
+    await getAuthorization(token).catch(error => callback(error))
+
     const dbProduct = await prisma.product.findUnique({
       include: { tags: { select: { value: true } } },
       where: { id: productId }
@@ -29,7 +77,7 @@ const productServer: ProductServiceServer = {
 
     if (!dbProduct) {
       return callback(
-        { code: status.INVALID_ARGUMENT, message: 'Product not found' },
+        { code: status.NOT_FOUND, message: 'Product not found' },
         null
       )
     }
@@ -66,16 +114,12 @@ const productServer: ProductServiceServer = {
 const server = new Server()
 server.addService(ProductServiceService, productServer)
 
-if (!process.env.API_URL) {
-  throw new Error('API_URL environment variable is required.')
-}
-
 server.bindAsync(
-  process.env.API_URL,
+  process.env.PRODUCT_API_URL,
   ServerCredentials.createInsecure(),
   () => {
     server.start()
     // eslint-disable-next-line no-console
-    console.log(`gRPC server running at ${process.env.API_URL}`)
+    console.log(`gRPC server running at ${process.env.PRODUCT_API_URL}`)
   }
 )
