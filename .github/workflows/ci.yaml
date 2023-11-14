@@ -27,7 +27,7 @@ jobs:
         run: pnpm install
 
       - name: Run Lint
-        run: pnpm lint
+        run: pnpm dlx nx run-many -t lint
 
   check:
     name: Check
@@ -52,7 +52,7 @@ jobs:
         run: pnpm install
 
       - name: Run Check
-        run: pnpm check
+        run: pnpm dlx nx run-many -t check
 
   test:
     name: Unit Tests
@@ -74,4 +74,4 @@ jobs:
         run: pnpm install
 
       - name: Run unit tests
-        run: pnpm test
+        run: pnpm dlx nx run-many -t test
