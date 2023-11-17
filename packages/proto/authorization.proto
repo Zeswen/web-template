@@ -2,12 +2,40 @@ syntax = "proto3";
 
 package authorization;
 
-message GetAuthorizationRequest {
-  string token = 1;
+message User {
+  string id = 1;
+  string email = 2;
+  bool verified_email = 3;
+  string name = 4;
+  string given_name = 5;
+  string family_name = 6;
+  string picture = 7;
+  string locale = 8;
+  string hd = 9;
 }
 
-message GetAuthorizationResponse {}
+message CreateAuthorizationRequest {}
+
+message CreateAuthorizationResponse {
+  string redirect_url  = 1;
+}
+
+message VerifyAuthorizationRequest {
+  string authorization_code = 1;
+}
+
+message VerifyAuthorizationResponse {
+  string access_token = 1;
+}
+
+message CheckAuthorizationRequest {}
+
+message CheckAuthorizationResponse {
+  User user = 1;
+}
 
 service AuthorizationService {
-  rpc GetAuthorization(GetAuthorizationRequest) returns (GetAuthorizationResponse);
+  rpc CreateAuthorization(CreateAuthorizationRequest) returns (CreateAuthorizationResponse);
+  rpc VerifyAuthorization(VerifyAuthorizationRequest) returns (VerifyAuthorizationResponse);
+  rpc CheckAuthorization(CheckAuthorizationRequest) returns (CheckAuthorizationResponse);
 }
