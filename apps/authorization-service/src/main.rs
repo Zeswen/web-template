@@ -1,7 +1,7 @@
 mod oauth;
 
 use oauth::{OauthClient, OauthClients};
-use oauth2::http::{HeaderMap, HeaderValue, Method};
+use oauth2::http::{HeaderMap, HeaderValue, Method, StatusCode};
 use oauth2::reqwest::async_http_client;
 use oauth2::url::Url;
 use oauth2::{AuthorizationCode, CsrfToken, HttpRequest, Scope, TokenResponse};
@@ -110,7 +110,7 @@ impl AuthorizationService for AuthorizationServer {
         .await
         .map_err(|e| Status::unauthenticated(e.to_string()))?;
 
-        if response.status_code != 200 {
+        if response.status_code != StatusCode::OK {
             return Err(Status::unauthenticated(
                 "Invalid authorization in request metadata",
             ));

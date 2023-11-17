@@ -10,7 +10,6 @@ pub struct OauthCredentials {
     redirect_uri: String,
     auth_url: String,
     token_url: String,
-    introspect_url: String,
     pub scopes: Vec<String>,
 }
 
@@ -44,7 +43,6 @@ pub fn get_oauth_clients() -> OauthClients {
         redirect_uri: "http://localhost:8080".to_string(),
         auth_url: "https://accounts.google.com/o/oauth2/v2/auth".to_string(),
         token_url: "https://oauth2.googleapis.com/token".to_string(),
-        introspect_url: "https://oauth2.googleapis.com/tokeninfo".to_string(),
         scopes: vec![
             "https://www.googleapis.com/auth/userinfo.email".to_string(),
             "https://www.googleapis.com/auth/userinfo.profile".to_string(),
