@@ -2,6 +2,10 @@ syntax = "proto3";
 
 package authorization;
 
+enum OauthProvider {
+  GOOGLE = 0;
+}
+
 message User {
   string id = 1;
   string email = 2;
@@ -14,14 +18,17 @@ message User {
   string hd = 9;
 }
 
-message CreateAuthorizationRequest {}
+message CreateAuthorizationRequest {
+  OauthProvider oauth_provider = 1;
+}
 
 message CreateAuthorizationResponse {
   string redirect_url  = 1;
 }
 
 message VerifyAuthorizationRequest {
-  string authorization_code = 1;
+  OauthProvider oauth_provider = 1;
+  string authorization_code = 2;
 }
 
 message VerifyAuthorizationResponse {

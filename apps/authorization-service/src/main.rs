@@ -1,17 +1,17 @@
-use oauth2::basic::BasicClient;
+mod oauth;
+
+use oauth::{OauthClient, OauthClients};
 use oauth2::http::{HeaderMap, HeaderValue, Method};
 use oauth2::reqwest::async_http_client;
 use oauth2::url::Url;
-use oauth2::{
-    AuthUrl, AuthorizationCode, ClientId, ClientSecret, CsrfToken, HttpRequest, RedirectUrl, Scope,
-    TokenResponse, TokenUrl,
-};
+use oauth2::{AuthorizationCode, CsrfToken, HttpRequest, Scope, TokenResponse};
 use proto::authorization::authorization_service_server::{
     AuthorizationService, AuthorizationServiceServer,
 };
 use proto::authorization::{
     CheckAuthorizationRequest, CheckAuthorizationResponse, CreateAuthorizationRequest,
-    CreateAuthorizationResponse, User, VerifyAuthorizationRequest, VerifyAuthorizationResponse,
+    CreateAuthorizationResponse, OauthProvider, User, VerifyAuthorizationRequest,
+    VerifyAuthorizationResponse,
 };
 use std::env;
 use std::error::Error;
@@ -25,65 +25,56 @@ fn get_authorization_from_request_metadata(request_metadata: &MetadataMap) -> Re
             "Missing authorization in request metadata",
         ))?
         .to_str()
-        .map_err(|_| Status::unauthenticated("Invalid authorization in request metadata"))
-}
-
-fn get_oauth_client() -> BasicClient {
-    let google_client_id = ClientId::new(
-        env::var("GOOGLE_CLIENT_ID").expect("Missing the GOOGLE_CLIENT_ID environment variable."),
-    );
-    let google_client_secret = ClientSecret::new(
-        env::var("GOOGLE_CLIENT_SECRET")
-            .expect("Missing the GOOGLE_CLIENT_SECRET environment variable."),
-    );
-    let auth_url = AuthUrl::new("https://accounts.google.com/o/oauth2/v2/auth".to_string())
-        .expect("Invalid authorization endpoint URL");
-    let token_url = TokenUrl::new("https://oauth2.googleapis.com/token".to_string())
-        .expect("Invalid token endpoint URL");
-
-    BasicClient::new(
-        google_client_id,
-        Some(google_client_secret),
-        auth_url,
-        Some(token_url),
-    )
-    .set_redirect_uri(
-        RedirectUrl::new("http://localhost:8080".to_string()).expect("Invalid redirect URL"),
-    )
+        .map_err(|err| Status::unauthenticated(err.to_string()))
 }
 
 struct AuthorizationServer {
-    oauth_client: Box<BasicClient>,
+    oauth_clients: OauthClients,
+}
+
+impl AuthorizationServer {
+    fn get_oauth_client_from_provider(&self, provider: &OauthProvider) -> &OauthClient {
+        self.oauth_clients
+            .get(provider)
+            .expect("Missing oauth client for provider")
+    }
 }
 
 #[tonic::async_trait]
 impl AuthorizationService for AuthorizationServer {
     async fn create_authorization(
         &self,
-        _request: Request<CreateAuthorizationRequest>,
+        request: Request<CreateAuthorizationRequest>,
     ) -> Result<Response<CreateAuthorizationResponse>, Status> {
-        let (auth_url, _) = self
-            .oauth_client
-            .authorize_url(CsrfToken::new_random)
-            .add_scope(Scope::new(
-                "https://www.googleapis.com/auth/userinfo.email".to_string(),
-            ))
-            .add_scope(Scope::new(
-                "https://www.googleapis.com/auth/userinfo.profile".to_string(),
-            ))
-            .url();
+        let oauth_provider = &request.get_ref().oauth_provider();
+        let oauth_client = self.get_oauth_client_from_provider(oauth_provider);
 
-        Ok(Response::new(CreateAuthorizationResponse {
-            redirect_url: auth_url.to_string(),
-        }))
+        let scopes = oauth_client
+            .credentials
+            .scopes
+            .iter()
+            .map(|s| Scope::new(s.to_string()));
+
+        let redirect_url = oauth_client
+            .client
+            .authorize_url(CsrfToken::new_random)
+            .add_scopes(scopes)
+            .url()
+            .0
+            .to_string();
+
+        Ok(Response::new(CreateAuthorizationResponse { redirect_url }))
     }
 
     async fn verify_authorization(
         &self,
         request: Request<VerifyAuthorizationRequest>,
     ) -> Result<Response<VerifyAuthorizationResponse>, Status> {
-        let token_response = self
-            .oauth_client
+        let oauth_provider = &request.get_ref().oauth_provider();
+        let oauth_client = self.get_oauth_client_from_provider(oauth_provider);
+
+        let token_response = oauth_client
+            .client
             .exchange_code(AuthorizationCode::new(
                 request.get_ref().authorization_code.to_string(),
             ))
@@ -149,15 +140,14 @@ impl AuthorizationService for AuthorizationServer {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
-    let oauth_client: BasicClient = get_oauth_client();
+    let oauth_clients = oauth::get_oauth_clients();
 
     let address = env::var("AUTHORIZATION_API_URL")
         .expect("AUTHORIZATION_API_URL environment variable not set")
         .parse()
         .expect("AUTHORIZATION_API_URL environment variable is not a valid URL");
-    let authorization_server = AuthorizationServer {
-        oauth_client: Box::from(oauth_client),
-    };
+
+    let authorization_server = AuthorizationServer { oauth_clients };
 
     println!("Authorization service listening on {}", address);
     Server::builder()

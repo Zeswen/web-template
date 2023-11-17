@@ -8,11 +8,7 @@
       "type": "lldb",
       "request": "launch",
       "name": "Debug executable 'authorization-service'",
-      "env": {
-        "AUTHORIZATION_API_URL": "[::1]:50052",
-        "GOOGLE_CLIENT_ID": "610698515442-5di9v4j90cc2acovj39flitmanlkl8ag.apps.googleusercontent.com",
-        "GOOGLE_CLIENT_SECRET": "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"
-      },
+      "env": {},
       "cargo": {
         "args": [
           "build",
