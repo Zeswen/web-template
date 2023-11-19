@@ -1,6 +1,6 @@
 {
-  "name": "authorization-service",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "authorization-service",
   "projectType": "application",
   "sourceRoot": "apps/authorization-service/src",
   "targets": {
@@ -41,7 +41,7 @@
         "target-dir": "apps/authorization-service/dist"
       }
     },
-    "run": {
+    "dev": {
       "executor": "@monodon/rust:run",
       "outputs": [
         "{options.target-dir}"
