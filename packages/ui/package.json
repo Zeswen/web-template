@@ -7,7 +7,6 @@
     "lint": "eslint \"**/*.ts*\"",
     "check": "tsc",
     "test": "vitest run",
-    "test:dev": "vitest dev",
     "storybook": "storybook dev -p 6006"
   },
   "devDependencies": {

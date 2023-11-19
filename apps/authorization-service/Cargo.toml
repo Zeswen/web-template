@@ -1,5 +1,5 @@
 [package]
-name = "authorization-service"
+name = "authorization_service"
 version = "1.0.0"
 edition = "2021"
 

@@ -1,6 +1,7 @@
 # Protobuf generations
 *.ts
 *.rs
+*.go
 !lib.rs
 !build.rs
 !index.ts

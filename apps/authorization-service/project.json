@@ -1,60 +1,43 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "authorization-service",
-  "projectType": "application",
+  "name": "@zeswen/authorization-service",
+  "root": "apps/authorization-service",
   "sourceRoot": "apps/authorization-service/src",
   "targets": {
     "build": {
-      "executor": "@monodon/rust:build",
-      "outputs": [
-        "{options.target-dir}"
-      ],
+      "executor": "nx:run-commands",
       "options": {
-        "target-dir": "apps/authorization-service/dist"
-      },
-      "configurations": {
-        "production": {
-          "release": true
-        }
-      }
-    },
-    "test": {
-      "executor": "@monodon/rust:test",
-      "outputs": [
-        "{options.target-dir}"
-      ],
-      "options": {
-        "target-dir": "apps/authorization-service/dist"
-      },
-      "configurations": {
-        "production": {
-          "release": true
-        }
-      }
-    },
-    "lint": {
-      "executor": "@monodon/rust:lint",
-      "outputs": [
-        "{options.target-dir}"
-      ],
-      "options": {
-        "target-dir": "apps/authorization-service/dist"
+        "command": "cargo build --release",
+        "cwd": "apps/authorization-service"
       }
     },
     "dev": {
-      "executor": "@monodon/rust:run",
-      "outputs": [
-        "{options.target-dir}"
-      ],
+      "executor": "nx:run-commands",
       "options": {
-        "target-dir": "apps/authorization-service/dist"
-      },
-      "configurations": {
-        "production": {
-          "release": true
-        }
+        "command": "cargo run",
+        "cwd": "apps/authorization-service"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo lint",
+        "cwd": "apps/authorization-service"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo run --release",
+        "cwd": "apps/authorization-service"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cargo test",
+        "cwd": "apps/authorization-service"
       }
     }
-  },
-  "tags": []
+  }
 }
