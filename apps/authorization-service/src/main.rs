@@ -116,25 +116,14 @@ impl AuthorizationService for AuthorizationServer {
             ));
         }
 
-        let user_data: serde_json::Value =
+        let user: Option<User> = Some(
             serde_json::from_str(&String::from_utf8(response.body).map_err(|_| {
                 Status::unauthenticated("Invalid authorization in request metadata")
             })?)
-            .unwrap();
+            .unwrap(),
+        );
 
-        Ok(Response::new(CheckAuthorizationResponse {
-            user: Some(User {
-                id: user_data["id"].as_str().unwrap_or("").to_string(),
-                email: user_data["email"].as_str().unwrap_or("").to_string(),
-                verified_email: user_data["verified_email"].as_bool().unwrap_or(false),
-                name: user_data["name"].as_str().unwrap_or("").to_string(),
-                given_name: user_data["given_name"].as_str().unwrap_or("").to_string(),
-                family_name: user_data["family_name"].as_str().unwrap_or("").to_string(),
-                picture: user_data["picture"].as_str().unwrap_or("").to_string(),
-                locale: user_data["locale"].as_str().unwrap_or("").to_string(),
-                hd: user_data["hd"].as_str().unwrap_or("").to_string(),
-            }),
-        }))
+        Ok(Response::new(CheckAuthorizationResponse { user }))
     }
 }
 
