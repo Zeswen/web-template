@@ -1,41 +1,15 @@
-import {
-  ChannelCredentials,
-  Server,
-  ServerCredentials,
-  status
-} from '@grpc/grpc-js'
+import { Server, ServerCredentials, status } from '@grpc/grpc-js'
 import { PrismaClient } from '@zeswen/db/client'
-import { grpcRequest } from '@zeswen/proto'
-import {
-  AuthorizationServiceClient,
-  GetAuthorizationRequest
-} from '@zeswen/proto/authorization'
 import {
   ProductServiceService,
   type ProductServiceServer
-} from '@zeswen/proto/product'
+} from '@zeswen/proto/product/product'
 
-if (!process.env.PRODUCT_API_URL || !process.env.AUTHORIZATION_API_URL) {
-  throw new Error(
-    'PRODUCT_API_URL or AUTHORIZATION_API_URL environment variable is required.'
-  )
+if (!process.env.PRODUCT_API_PORT) {
+  throw new Error('PRODUCT_API_PORT environment variable is required.')
 }
 
 const prisma = new PrismaClient()
-
-const authorizationServiceClient = new AuthorizationServiceClient(
-  process.env.AUTHORIZATION_API_URL,
-  ChannelCredentials.createInsecure()
-)
-
-async function getAuthorization(token: string) {
-  return grpcRequest(
-    authorizationServiceClient.getAuthorization.bind(
-      authorizationServiceClient
-    ),
-    GetAuthorizationRequest.create({ token })
-  )
-}
 
 const productServer: ProductServiceServer = {
   listProducts: async (_call, callback) => {
@@ -67,8 +41,6 @@ const productServer: ProductServiceServer = {
         null
       )
     }
-
-    await getAuthorization(token).catch(error => callback(error))
 
     const dbProduct = await prisma.product.findUnique({
       include: { tags: { select: { value: true } } },
@@ -115,11 +87,11 @@ const server = new Server()
 server.addService(ProductServiceService, productServer)
 
 server.bindAsync(
-  process.env.PRODUCT_API_URL,
+  process.env.PRODUCT_API_PORT,
   ServerCredentials.createInsecure(),
   () => {
     server.start()
     // eslint-disable-next-line no-console
-    console.log(`gRPC server running at ${process.env.PRODUCT_API_URL}`)
+    console.log(`gRPC server running at ${process.env.PRODUCT_API_PORT}`)
   }
 )

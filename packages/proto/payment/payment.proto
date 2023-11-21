@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "github.com/zeswen/web-template/packages/proto/payment";
+
+package payment;
+
+message CreatePaymentRequest {}
+
+message CreatePaymentResponse {}
+
+service PaymentService {
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
+}

@@ -1,42 +1,42 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "@zeswen/health-service",
-  "root": "apps/health-service",
-  "sourceRoot": "apps/health-service/src",
+  "name": "@zeswen/payment-service",
+  "root": "apps/payment-service",
+  "sourceRoot": "apps/payment-service/src",
   "targets": {
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "go build --release",
-        "cwd": "apps/health-service"
+        "command": "go build main.go",
+        "cwd": "apps/payment-service"
       }
     },
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "go run",
-        "cwd": "apps/health-service"
+        "command": "go run main.go",
+        "cwd": "apps/payment-service"
       }
     },
     "lint": {
       "executor": "nx:run-commands",
       "options": {
         "command": "go lint",
-        "cwd": "apps/health-service"
+        "cwd": "apps/payment-service"
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "go run --release",
-        "cwd": "apps/health-service"
+        "command": "go run main.go",
+        "cwd": "apps/payment-service"
       }
     },
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "go test",
-        "cwd": "apps/health-service"
+        "command": "go test main.go",
+        "cwd": "apps/payment-service"
       }
     }
   }

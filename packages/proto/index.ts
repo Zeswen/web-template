@@ -1,12 +1,15 @@
-import type { AuthorizationServiceClient } from './authorization'
-import type { ProductServiceClient } from './product'
+import type { AuthorizationServiceClient } from './authorization/authorization'
+import type { PaymentServiceClient } from './payment/payment'
+import type { ProductServiceClient } from './product/product'
 
 type NonNullableValues<T> = {
   [P in keyof T]-?: NonNullable<T[P]>
 }
 type Last<T extends any[]> = T extends [...infer _I, infer L] ? L : never
 
-type GrpcClient = ProductServiceClient & AuthorizationServiceClient
+type GrpcClient = AuthorizationServiceClient &
+  PaymentServiceClient &
+  ProductServiceClient
 
 type GrpcMethod = GrpcClient[keyof GrpcClient] &
   ((request: any, callback: (...args: any[]) => any) => any)

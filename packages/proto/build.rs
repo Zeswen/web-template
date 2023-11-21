@@ -6,6 +6,13 @@ fn main() -> Result<(), Box<dyn Error>> {
         .build_client(false)
         .type_attribute("User", "#[derive(serde::Deserialize, serde::Serialize)]")
         .out_dir(current_dir()?)
-        .compile(&["product.proto", "authorization.proto"], &["."])?;
+        .compile(
+            &[
+                "authorization/authorization.proto",
+                "payment/payment.proto",
+                "product/product.proto",
+            ],
+            &["."],
+        )?;
     Ok(())
 }

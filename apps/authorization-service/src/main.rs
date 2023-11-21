@@ -131,10 +131,13 @@ impl AuthorizationService for AuthorizationServer {
 async fn main() -> Result<(), Box<dyn Error>> {
     let oauth_clients = oauth::get_oauth_clients();
 
-    let address = env::var("AUTHORIZATION_API_URL")
-        .expect("AUTHORIZATION_API_URL environment variable not set")
-        .parse()
-        .expect("AUTHORIZATION_API_URL environment variable is not a valid URL");
+    let address = format!(
+        "[::1]:{}",
+        env::var("AUTHORIZATION_API_PORT")
+            .expect("AUTHORIZATION_API_PORT environment variable not set")
+    )
+    .parse()
+    .expect("AUTHORIZATION_API_PORT environment variable is not a valid URL");
 
     let authorization_server = AuthorizationServer { oauth_clients };
 
