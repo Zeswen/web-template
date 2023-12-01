@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "protoc --plugin=.\\node_modules\\.bin\\protoc-gen-ts_proto --ts_proto_out=.\\ --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true authorization/*.proto product/*.proto",
+    "build": "protoc --go_out=paths=source_relative:.  --go-grpc_out=. --go-grpc_opt=paths=source_relative --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./ --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true authorization/*.proto payment/*.proto product/*.proto",
     "build-go": "protoc --go_out=paths=source_relative:.  --go-grpc_out=. --go-grpc_opt=paths=source_relative authorization/*.proto payment/*.proto product/*.proto"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.11",
+    "@grpc/grpc-js": "^1.9.12",
     "long": "^5.2.3",
     "protobufjs": "^7.2.5",
-    "ts-proto": "^1.164.0"
+    "ts-proto": "^1.165.0"
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
