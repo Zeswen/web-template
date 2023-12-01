@@ -1,11 +1,11 @@
 pub mod authorization {
-    include!("./authorization.rs");
+    include!("./authorization/authorization.rs");
 }
 
 pub mod payment {
-    include!("./payment.rs");
+    include!("./payment/payment.rs");
 }
 
 pub mod product {
-    include!("./product.rs");
+    include!("./product/product.rs");
 }

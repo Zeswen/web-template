@@ -1,18 +1,23 @@
-use std::env::current_dir;
 use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
     tonic_build::configure()
         .build_client(false)
         .type_attribute("User", "#[derive(serde::Deserialize, serde::Serialize)]")
-        .out_dir(current_dir()?)
+        .out_dir("./authorization")
         .compile(
-            &[
-                "authorization/authorization.proto",
-                "payment/payment.proto",
-                "product/product.proto",
-            ],
-            &["."],
+            &["./authorization/authorization.proto"],
+            &["./authorization"],
         )?;
+    tonic_build::configure()
+        .build_client(false)
+        .type_attribute("User", "#[derive(serde::Deserialize, serde::Serialize)]")
+        .out_dir("./payment")
+        .compile(&["./payment/payment.proto"], &["./payment"])?;
+    tonic_build::configure()
+        .build_client(false)
+        .type_attribute("User", "#[derive(serde::Deserialize, serde::Serialize)]")
+        .out_dir("./product")
+        .compile(&["./product/product.proto"], &["./product"])?;
     Ok(())
 }
