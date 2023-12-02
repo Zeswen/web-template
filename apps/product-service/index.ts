@@ -87,7 +87,7 @@ const server = new Server()
 server.addService(ProductServiceService, productServer)
 
 server.bindAsync(
-  process.env.PRODUCT_API_PORT,
+  `0.0.0.0:${process.env.PRODUCT_API_PORT}`,
   ServerCredentials.createInsecure(),
   () => {
     server.start()
