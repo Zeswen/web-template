@@ -27,7 +27,7 @@
       "dependsOn": [
         {
           "projects": [
-            "proto"
+            "@zeswen/proto"
           ],
           "target": "build"
         }
@@ -38,7 +38,7 @@
       "dependsOn": [
         {
           "projects": [
-            "proto"
+            "@zeswen/proto"
           ],
           "target": "build"
         }
@@ -56,7 +56,7 @@
       "dependsOn": [
         {
           "projects": [
-            "proto"
+            "@zeswen/proto"
           ],
           "target": "build"
         }
