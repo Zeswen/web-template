@@ -76,12 +76,11 @@ jobs:
 
       - name: Install Node.js
         uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
 
       - name: Install Go
         uses: actions/setup-go@v4
-
-        with:
-          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
