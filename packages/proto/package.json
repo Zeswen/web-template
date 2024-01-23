@@ -7,10 +7,10 @@
     "build-go": "protoc --go_out=paths=source_relative:.  --go-grpc_out=. --go-grpc_opt=paths=source_relative authorization/*.proto payment/*.proto product/*.proto"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.12",
+    "@grpc/grpc-js": "^1.9.14",
     "long": "^5.2.3",
-    "protobufjs": "^7.2.5",
-    "ts-proto": "^1.165.0"
+    "protobufjs": "^7.2.6",
+    "ts-proto": "^1.167.0"
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
