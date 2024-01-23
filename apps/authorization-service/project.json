@@ -21,7 +21,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cargo lint",
+        "command": "cargo fmt",
         "cwd": "apps/authorization-service"
       }
     },

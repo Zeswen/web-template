@@ -21,7 +21,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "go lint",
+        "command": "go fmt",
         "cwd": "apps/payment-service"
       }
     },
