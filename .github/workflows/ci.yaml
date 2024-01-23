@@ -23,6 +23,9 @@ jobs:
         with:
           cache: 'pnpm'
 
+      - name: Install Go
+        uses: actions/setup-go@v4
+
       - name: Install dependencies
         run: pnpm install
 
@@ -48,6 +51,9 @@ jobs:
         with:
           cache: 'pnpm'
 
+      - name: Install Go
+        uses: actions/setup-go@v4
+
       - name: Install dependencies
         run: pnpm install
 
@@ -70,6 +76,10 @@ jobs:
 
       - name: Install Node.js
         uses: actions/setup-node@v3
+
+      - name: Install Go
+        uses: actions/setup-go@v4
+
         with:
           cache: 'pnpm'
 

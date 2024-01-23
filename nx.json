@@ -23,10 +23,26 @@
       ]
     },
     "check": {
-      "cache": true
+      "cache": true,
+      "dependsOn": [
+        {
+          "projects": [
+            "proto"
+          ],
+          "target": "build"
+        }
+      ]
     },
     "lint": {
-      "cache": true
+      "cache": true,
+      "dependsOn": [
+        {
+          "projects": [
+            "proto"
+          ],
+          "target": "build"
+        }
+      ]
     },
     "dev": {
       "dependsOn": [
@@ -36,7 +52,15 @@
     "migrate": {},
     "storybook": {},
     "test": {
-      "cache": true
+      "cache": true,
+      "dependsOn": [
+        {
+          "projects": [
+            "proto"
+          ],
+          "target": "build"
+        }
+      ]
     },
     "test:dev": {}
   }
