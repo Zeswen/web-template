@@ -5,7 +5,7 @@ import {
   GetProductRequest,
   ListProductsRequest,
   ProductServiceClient
-} from '@zeswen/proto/product'
+} from '@zeswen/proto/product/product'
 
 if (!process.env.API_URL) {
   throw new Error('API_URL environment variable is required.')
