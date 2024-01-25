@@ -13,29 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: 'pnpm'
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Run Lint
-        run: pnpm lint
-
-  check:
-    name: Check
-    timeout-minutes: 15
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install Protoc
         uses: arduino/setup-protoc@v2
@@ -48,19 +26,25 @@ jobs:
         with:
           cache: 'pnpm'
 
+      - name: Install Go
+        uses: actions/setup-go@v4
+
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run Check
-        run: pnpm check
+      - name: Run Lint
+        run: pnpm dlx nx run-many -t lint
 
-  test:
-    name: Unit Tests
+  check:
+    name: Check
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -70,8 +54,39 @@ jobs:
         with:
           cache: 'pnpm'
 
+      - name: Install Go
+        uses: actions/setup-go@v4
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Check
+        run: pnpm dlx nx run-many -t check
+
+  test:
+    name: Unit Tests
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Protoc
+        uses: arduino/setup-protoc@v2
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+
+      - name: Install Go
+        uses: actions/setup-go@v4
+
       - name: Install dependencies
         run: pnpm install
 
       - name: Run unit tests
-        run: pnpm test
+        run: pnpm dlx nx run-many -t test

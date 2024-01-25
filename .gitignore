@@ -30,11 +30,12 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
-
 # vercel
 .vercel
 
 # builds
 dist
+target
+
+
+.nx/cache

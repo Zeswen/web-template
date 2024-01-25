@@ -11,15 +11,15 @@
     "check": "tsc"
   },
   "dependencies": {
-    "@grpc/grpc-js": "^1.9.9",
+    "@grpc/grpc-js": "^1.9.14",
     "@zeswen/db": "workspace:*",
     "@zeswen/proto": "workspace:*"
   },
   "devDependencies": {
     "@zeswen/eslint-config": "workspace:*",
     "@zeswen/tsconfig": "workspace:*",
-    "esbuild": "^0.19.5",
+    "esbuild": "^0.19.12",
     "esbuild-plugin-copy": "^2.1.1",
-    "typescript": "^5.2.2"
+    "typescript": "^5.3.3"
   }
 }

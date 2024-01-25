@@ -1,6 +1,6 @@
 # Zeswen Monorepo Template
 
-This is a monorepo template to do TypeScript microservices, Prisma + PostgreSQL, gRPC and Next.js applications.
+This is a monorepo template to do microservices, PostgreSQL, gRPC and Next.js applications.
 
 ## What's inside?
 

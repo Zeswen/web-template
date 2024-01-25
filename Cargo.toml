@@ -1,0 +1,7 @@
+
+[workspace]
+members = ['apps/authorization-service', 'packages/proto']
+resolver = "2"
+
+[profile.release]
+lto = true

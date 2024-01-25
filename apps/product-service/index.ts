@@ -3,7 +3,11 @@ import { PrismaClient } from '@zeswen/db/client'
 import {
   ProductServiceService,
   type ProductServiceServer
-} from '@zeswen/proto/product'
+} from '@zeswen/proto/product/product'
+
+if (!process.env.PRODUCT_API_PORT) {
+  throw new Error('PRODUCT_API_PORT environment variable is required.')
+}
 
 const prisma = new PrismaClient()
 
@@ -21,7 +25,23 @@ const productServer: ProductServiceServer = {
     callback(null, { products })
   },
   getProduct: async (call, callback) => {
-    const productId = call.request.id
+    const productId = call.request?.id
+    const token = call.metadata.get('authorization')?.[0]?.toString()
+
+    if (!token) {
+      return callback(
+        { code: status.UNAUTHENTICATED, message: 'authorization missing' },
+        null
+      )
+    }
+
+    if (!productId) {
+      return callback(
+        { code: status.INVALID_ARGUMENT, message: 'id missing' },
+        null
+      )
+    }
+
     const dbProduct = await prisma.product.findUnique({
       include: { tags: { select: { value: true } } },
       where: { id: productId }
@@ -29,7 +49,7 @@ const productServer: ProductServiceServer = {
 
     if (!dbProduct) {
       return callback(
-        { code: status.INVALID_ARGUMENT, message: 'Product not found' },
+        { code: status.NOT_FOUND, message: 'Product not found' },
         null
       )
     }
@@ -43,6 +63,7 @@ const productServer: ProductServiceServer = {
   },
   createProduct: async (call, callback) => {
     const { name, description, imageUrl, tags } = call.request
+
     const dbProduct = await prisma.product.create({
       data: {
         name,
@@ -65,16 +86,12 @@ const productServer: ProductServiceServer = {
 const server = new Server()
 server.addService(ProductServiceService, productServer)
 
-if (!process.env.API_URL) {
-  throw new Error('API_URL environment variable is required.')
-}
-
 server.bindAsync(
-  process.env.API_URL,
+  `0.0.0.0:${process.env.PRODUCT_API_PORT}`,
   ServerCredentials.createInsecure(),
   () => {
     server.start()
     // eslint-disable-next-line no-console
-    console.log(`gRPC server running at ${process.env.API_URL}`)
+    console.log(`gRPC server running at ${process.env.PRODUCT_API_PORT}`)
   }
 )
