@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+
 option go_package = "github.com/zeswen/web-template/packages/proto/authorization";
 
 package authorization;
@@ -44,7 +47,23 @@ message CheckAuthorizationResponse {
 }
 
 service AuthorizationService {
-  rpc CreateAuthorization(CreateAuthorizationRequest) returns (CreateAuthorizationResponse);
-  rpc VerifyAuthorization(VerifyAuthorizationRequest) returns (VerifyAuthorizationResponse);
-  rpc CheckAuthorization(CheckAuthorizationRequest) returns (CheckAuthorizationResponse);
+   option (google.api.default_host) = "authorization.zeswen.dev";
+
+  rpc CreateAuthorization(CreateAuthorizationRequest) returns (CreateAuthorizationResponse) {
+    option (google.api.http) = {
+      post: "/v1/authorizations"
+    };
+  };
+
+  rpc VerifyAuthorization(VerifyAuthorizationRequest) returns (VerifyAuthorizationResponse) {
+    option (google.api.http) = {
+      post: "/v1/authorizations:verify"
+    };
+  };
+
+  rpc CheckAuthorization(CheckAuthorizationRequest) returns (CheckAuthorizationResponse) {
+    option (google.api.http) = {
+      get: "/v1/authorizations:check"
+    };
+  };
 }

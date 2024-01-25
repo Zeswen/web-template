@@ -1,10 +1,12 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/timestamp.proto";
+
 option go_package = "github.com/zeswen/web-template/packages/proto/product";
 
 package product;
-
-import "google/protobuf/timestamp.proto";
 
 message Product {
   string id = 1;
@@ -42,7 +44,24 @@ message ListProductsResponse {
 }
 
 service ProductService {
-  rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
-  rpc GetProduct(GetProductRequest) returns (GetProductResponse);
-  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse);
+  option (google.api.default_host) = "product.zeswen.dev";
+
+  rpc ListProducts(ListProductsRequest) returns (ListProductsResponse) {
+    option (google.api.http) = {
+      get: "/products"
+    };
+  }
+
+  rpc GetProduct(GetProductRequest) returns (GetProductResponse) {
+    option (google.api.http) = {
+      get: "/products/{id}"
+    };
+  }
+
+  rpc CreateProduct(CreateProductRequest) returns (CreateProductResponse) {
+    option (google.api.http) = {
+      post: "/products"
+      body: "*"
+    };
+  }
 }

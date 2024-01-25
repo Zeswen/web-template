@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+
 option go_package = "github.com/zeswen/web-template/packages/proto/payment";
 
 package payment;
@@ -9,5 +12,11 @@ message CreatePaymentRequest {}
 message CreatePaymentResponse {}
 
 service PaymentService {
-  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
+  option (google.api.default_host) = "payment.zeswen.dev";
+
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse) {
+    option (google.api.http) = {
+      post: "/v1/payments"
+    };
+  };
 }
