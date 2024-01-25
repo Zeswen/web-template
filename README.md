@@ -3,56 +3,34 @@
 This is a monorepo template to do microservices, PostgreSQL, gRPC and Next.js applications.
 
 ## What's inside?
+Everything is connected with gRPC.
 
-This Monorepo includes the following packages/apps:
+### Apps
+A folder containing all the applications.
+- `authorization-service`: an Oauth2 gRPC Rust microservice.
+- `payment-service`: a gRPC Go microservice.
+- `product-service`: a gRPC Node.js microservice.
+- `web`: a [Next.js](https://nextjs.org/) application.
 
-### Apps and Packages
-
-- `product-service`: a gRPC microservice
-- `web`: a [Next.js](https://nextjs.org/) app with App Router
-- `db`: a [Prisma](https://www.prisma.io/) ORM
-- `eslint-config`: `eslint` configuration
-- `proto`: Protobufs used throughout the monorepo
-- `tailwind-config`: `tailwindcss` configuration
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-- `ui`: a stub React component library shared by the `web` application
+### Packages
+A folder containing all the packages
+- `db`: a [Prisma](https://www.prisma.io/) ORM database client.
+- `eslint-config`: `eslint` configuration.
+- `proto`: Protos used throughout the monorepo.
+- `tailwind-config`: `tailwindcss` configuration.
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo.
+- `ui`: a stub React component library shared by the `web` application.
 
 ## Getting started
 
-### pnpm
-
-Install [pnpm](https://pnpm.io/installation).
-
-### Protocol Buffer Compiler
-
-Install [Protocol Buffer Compiler](https://grpc.io/docs/protoc-installation/).
-
-### PostgreSQL
-
-Install [PostgreSQL]('https://hub.docker.com/_/postgres').
-
-### Environment Variables
-
-Clone `.env.example` to `.env` and fill in the values.
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
+### Docker
+Install [Docker](https://www.docker.com/).  
+Run the following command to build and start the development environment:
 ```sh
-pnpm dev
+docker build -t "zeswen-dev" .
+docker run -it -p 3000:3000 -p 5432:5432 -p 50051:50051 -p 50052:50052 -p 50053:50053 --name "zeswen-dev" "zeswen-dev"
 ```
 
-### Deploy
-
-To build all apps and packages, run the following command:
-
-```sh
-pnpm build
-```
-
-To start the already built and optimized apps, run the following command:
-
-```sh
-pnpm start
-```
+### Visual Studio Code
+Install [Visual Studio Code](https://code.visualstudio.com/) and its Dev Containers extension.  
+Connect to the `zeswen-dev` container and start coding!
