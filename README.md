@@ -27,10 +27,10 @@ A folder containing all the packages
 Install [Docker](https://www.docker.com/).  
 Run the following command to build and start the development environment:
 ```sh
-docker build -t "zeswen-dev" .
-docker run -it -p 3000:3000 -p 5432:5432 -p 50051:50051 -p 50052:50052 -p 50053:50053 --name "zeswen-dev" "zeswen-dev"
+docker build -t "web-template" .
+docker run -it -p 3000:3000 -p 5432:5432 -p 50051:50051 -p 50052:50052 -p 50053:50053 --name "web-template" "web-template"
 ```
 
 ### Visual Studio Code
 Install [Visual Studio Code](https://code.visualstudio.com/) and its Dev Containers extension.  
-Connect to the `zeswen-dev` container and start coding!
+Connect to the `web-template` container and start coding!
