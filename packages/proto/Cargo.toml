@@ -10,7 +10,7 @@ path = "lib.rs"
 [dependencies]
 prost = "0.12.1"
 prost-types = "0.12.1"
-serde = "1.0.192"
+serde = { version = "1.0.192", features = ["serde_derive"] }
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 tonic = "0.10.2"
 
