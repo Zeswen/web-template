@@ -132,7 +132,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let oauth_clients = oauth::get_oauth_clients();
 
     let address = format!(
-        "[::1]:{}",
+        "[::0]:{}",
         env::var("AUTHORIZATION_API_PORT")
             .expect("AUTHORIZATION_API_PORT environment variable not set")
     )
