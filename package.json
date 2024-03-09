@@ -11,7 +11,7 @@
     "format": "prettier --write **"
   },
   "devDependencies": {
-    "nx": "17.2.8",
-    "prettier": "^3.2.4"
+    "nx": "18.0.8",
+    "prettier": "^3.2.5"
   }
 }
